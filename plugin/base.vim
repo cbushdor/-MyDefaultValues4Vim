@@ -15,6 +15,7 @@
 let g:true = 0        " We define true
 let g:false = !true   " We define false
 
+. ../vimrc/base.vimrc
 
 function! OkFor(var)
 	if exists(a:var)

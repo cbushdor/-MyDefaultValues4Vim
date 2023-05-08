@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-05-08 05:53:14
+* Last Modified : 2023-05-08 05:59:45
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.2
+* Version : 0.0.0.4
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -55,7 +55,7 @@ When plugin installed in .vimrc cannot access to function defined or some values
 # Install extra
 
 need to define in ~/.vimrc a variable:
-* let g:path_local_conf = expand('<sfile>:p:h').."/../vimrc/" " path to vimrc that contains files Put this into ~/.vimrc to load and source
+* let g:path_local_conf = expand('<sfile>:p:h').."/../vimrc/" 
 
 We need to define in ~/.vimrc a function **LoadPlug(baseplug,gitpath,path)**:
 
@@ -68,8 +68,7 @@ Then we call it (below is an example).
 
 ```
 function! LoadPlug(baseplug,gitpath,path)
-  call plug#begin(a:baseplug) "'~/.vim/plugged')
-  "Plug 'cbushdor/-MyDefaultValues4Vim'
+  call plug#begin(a:baseplug)
   Plug a:gitpath
   execute "source "..a:baseplug..a:path
   call plug#end()

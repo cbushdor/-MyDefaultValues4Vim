@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-05-08 05:59:45
+* Last Modified : 2023-05-08 23:13:41
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.4
+* Version : 0.0.0.14
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -50,29 +50,35 @@ To update type one of those comands:
 ```
 
 # An issue met
-When plugin installed in .vimrc cannot access to function defined or some values. Hence, we need to source it to access to its content.
+I noticed that, when a plugin is installed, within *.vimrc* we cannot access nor function(s) or some values defined from withing this new pluggin installed... 
+May be I am new to vim scripting?
 
 # Install extra
 
-need to define in ~/.vimrc a variable:
-* let g:path_local_conf = expand('<sfile>:p:h').."/../vimrc/" 
-
-We need to define in ~/.vimrc a function **LoadPlug(baseplug,gitpath,path)**:
-
-Here is the meaning of parameters:
-* baseplug: where plugin is stored
-* gitpath: where git is
-* path: local path to reach pluggin (don't need to contains baseplug)
-
-Then we call it (below is an example).
+To make it work use the following in ~/.vimrc at
 
 ```
-function! LoadPlug(baseplug,gitpath,path)
-  call plug#begin(a:baseplug)
-  Plug a:gitpath
-  execute "source "..a:baseplug..a:path
-  call plug#end()
+     function! StartsLoading(path,plug)
+           execute "source "..a:path..a:plug.."/plugin/"..a:plug..".vim"
+     endfunction
+
+     call StartsLoading('~/.vim/plugged/','-MyDefaultValues4Vim')
+```
+
+Where variables:
+* path: path to where plugin is stored
+* plug: plugin directory name
+
+# A final configuration:
+
+```
+call plug#begin()
+Plug 'cbushdor/-MyDefaultValues4Vim'
+call plug#end()
+
+function! StartsLoading(path,plug)
+   execute "source "..a:path..a:plug.."/plugin/"..a:plug..".vim"
 endfunction
 
-call LoadPlug('~/.vim/plugged','cbushdor/-MyDefaultValues4Vim',"/-MyDefaultValues4Vim/plugin/base.vim")
+call StartsLoading('~/.vim/plugged/','-MyDefaultValues4Vim')
 ```

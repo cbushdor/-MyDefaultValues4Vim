@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-05-10 04:50:32
+* Last Modified : 2023-05-10 04:54:59
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.20
+* Version : 0.0.0.23
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -99,6 +99,13 @@ function! StartsLoading(path,plug)
 endfunction
 
 call StartsLoading('~/.vim/plugged/','-MyDefaultValues4Vim')
+```
+
+We can create for instance a file *~/.myvimrc* that contains:
+
+```
+let g:true = 0
+let g:false = !true
 ```
 
 # License

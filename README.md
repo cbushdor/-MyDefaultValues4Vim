@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-05-08 23:13:41
+* Last Modified : 2023-05-10 02:07:19
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.14
+* Version : 0.0.0.15
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -82,3 +82,10 @@ endfunction
 
 call StartsLoading('~/.vim/plugged/','-MyDefaultValues4Vim')
 ```
+
+# License
+
+Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0)
+* 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
+ 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
+

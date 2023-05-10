@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-05-10 04:54:59
+* Last Modified : 2023-05-10 05:03:33
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.23
+* Version : 0.0.0.31
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -28,14 +28,23 @@ function! StartsLoading(path,plug)
   endif
 endfunction
 
+" We load personal file for configuration
 call StartsLoading('~','.myvimrc')
 ```
 
 ### Parameters
 
-* path: home directory where the pluggin/file to reach.
+* path: home directory where the pluggin/file can be reached.
 * plug: file to reach (can include sub dir to reach file).
 
+### Don't mixup with local config
+
+We can create for instance a file *~/.myvimrc* that contains:
+
+```
+let g:true = 0
+let g:false = !true
+```
 
 ## Installing plugins with vim-plug
 
@@ -88,25 +97,20 @@ function! StartsLoading(path,plug)
   endif
 endfunction
 
+" We load personal file for configuration
 call StartsLoading('~','.myvimrc')
 
 call plug#begin()
 Plug 'cbushdor/-MyDefaultValues4Vim'
 call plug#end()
 
-function! StartsLoading(path,plug)
-   execute "source "..a:path..a:plug.."/plugin/"..a:plug..".vim"
-endfunction
-
+" We load plugin
 call StartsLoading('~/.vim/plugged/','-MyDefaultValues4Vim')
 ```
 
-We can create for instance a file *~/.myvimrc* that contains:
+# WATCHOUT
 
-```
-let g:true = 0
-let g:false = !true
-```
+Plugin not finished yet! Subject to change.
 
 # License
 

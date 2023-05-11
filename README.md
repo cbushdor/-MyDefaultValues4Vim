@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-05-11 04:20:08
+* Last Modified : 2023-05-11 04:21:09
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.48
+* Version : 0.0.0.49
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -142,4 +142,4 @@ Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0)
 [^1]: About [Vim](https://www.vim.org/about.php).
 [^2]: How to install [Vim plugin](https://linuxhandbook.com/install-vim-plugins/).
 [^3]: This code was based on [Vim documentation](https://vimdoc.sourceforge.net/).
-[^4]: This is where the vimrc directory is ~/.vim/plugged/-MyDefaultValues4Vim.
+[^4]: This is where the vimrc directory is *~/.vim/plugged/-MyDefaultValues4Vim* in our case.

@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-05-11 04:12:58
+* Last Modified : 2023-05-11 04:16:30
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.43
+* Version : 0.0.0.45
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -131,7 +131,7 @@ These files were added in *vimrc* directory[^1]. They have *.vim* extenstion. th
 * base.vim: added for test pupose.
 * DeleteTailingWS.vim: delete tring white spaces when file is save *:w* for i.e.	
 
-[^1]: This is where the vimrc directory is *~/.vim/plugged/-MyDefaultValues4Vim*.
+[^1]: This is where the vimrc directory is ~/.vim/plugged/-MyDefaultValues4Vim.
 
 # WATCHOUT
 

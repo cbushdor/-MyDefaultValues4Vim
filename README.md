@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-05-11 03:59:33
+* Last Modified : 2023-05-11 04:01:37
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.38
+* Version : 0.0.0.40
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -19,8 +19,8 @@
 
 - [Vim](https://en.wikipedia.org/wiki/Vim_(text_editor))[^1][^3] (text editor): Version 9.0.1050.
 - System [macOS](https://en.wikipedia.org/wiki/MacOS): Version 13.2.1 (22D68).
-- System [Fedora](https://getfedora.org/) (not fully testted yet): Version 38beta (Should work on other linux [distros](https://en.wikipedia.org/wiki/List_of_Linux_distributions) too).
-- Scripts: [Markdown](https://en.wikipedia.org/wiki/Markdown), [Vim Script](https://en.wikipedia.org/wiki/Vim_(text_editor)#Vim_script), [shell sh](https://en.wikipedia.org/wiki/Unix_shell).
+- System [Fedora](https://getfedora.org/) (not fully tested yet): Version 38beta (Should work on other linux [distros](https://en.wikipedia.org/wiki/List_of_Linux_distributions) too).
+- Scripts: [Markdown](https://en.wikipedia.org/wiki/Markdown), [Vim Script](https://en.wikipedia.org/wiki/Vim_(text_editor)#Vim_script).
 - Vim plugin: [Vim-plug](https://github.com/junegunn/vim-plug).
 
 [^1]: About [Vim](https://www.vim.org/about.php).

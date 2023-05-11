@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-05-10 05:05:29
+* Last Modified : 2023-05-11 03:51:10
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.32
+* Version : 0.0.0.35
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -107,6 +107,13 @@ call plug#end()
 " We load plugin
 call StartsLoading('~/.vim/plugged/','-MyDefaultValues4Vim')
 ```
+
+# Modules
+
+These files were added in *vimrc* directory. They have *.vim* extenstion. they are loaded by default once put in this directory.
+
+* base.vim: added for test pupose.
+* DeleteTailingWS.vim: delete tring white spaces when file is save *:w* for i.e.	
 
 # WATCHOUT
 

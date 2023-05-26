@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-05-11 04:21:09
+* Last Modified : 2023-05-26 02:52:27
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.49
+* Version : 0.0.0.50
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -55,8 +55,8 @@ call StartsLoading('~','.myvimrc')
 We can create for instance a file *~/.myvimrc* that contains:
 
 ```
-let g:true = 0
-let g:false = !true
+let g:true = 1
+let g:false = 0
 ```
 
 ## Installing this plugin with vim-plug

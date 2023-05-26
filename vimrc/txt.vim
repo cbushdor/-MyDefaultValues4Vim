@@ -2,17 +2,44 @@
 " Created By : sdo
 " File Name : txt.vim
 " Creation Date :1970-01-01 00:59:59
-" Last Modified : 2023-05-25 02:55:30
+" Last Modified : 2023-05-26 02:49:40
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.25
+" Version : 0.0.0.144
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
 " Purpose :
 " ------------------------------------------------------
 
-echom "We load file"
-echo "-----------------------------------------"
+function! CheckValue(myvar)
+	let d =  exists(a:myvar) " Variable detected
+	if d
+		" echo a:myvar.." detected!"
+		let r = split(a:myvar,':')
+		if r[0] == 'g'
+			let p = g:
+		elseif r[0] == 's'
+			let p = s:
+		elseif r[0] == 'l'
+			let p = l:
+		endif
+		"	echo "g:false:"..g:false
+		"	echo "g:true:"..g:true
+		"	echo "g:my_auto_DeleteTrailingWS: "..get(g:,'my_auto_DeleteTrailingWS')
+		"	echo a:myvar..": "..get(p,'my_auto_DeleteTrailingWS')
+		"	echo "get(p,r[1]): "..get(p,r[1])
+		return get(p,r[1]) == g:true
+	endif
+	"echo a:myvar.." not detected!"
+	return d
+endfunction
+
+if CheckValue('s:my_auto_DeleteTrailingWS')
+	echo "continue"
+else 
+	echo "can't continue"
+	finish
+endif
 
 function! GetPotionFold(lnum)
 	if getline(a:lnum) =~? '\v^\s*$'
@@ -21,7 +48,7 @@ function! GetPotionFold(lnum)
 
 	return '0'
 endfunction
-      
+
 function! IndentLevel(lnum)
 	return indent(a:lnum) / &shiftwidth
 endfunction

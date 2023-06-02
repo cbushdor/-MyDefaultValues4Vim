@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-06-02 22:34:40
+* Last Modified : 2023-06-02 22:43:57
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.54
+* Version : 0.0.0.56
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -125,6 +125,8 @@ call plug#end()
 
 " Set  g:my_auto_DeleteTrailingWS to true to delete trailing White Space in .txt file
 let g:my_auto_DeleteTrailingWS=true
+
+" We load personal file for configuration
 call StartsLoading('~/.vim/plugged/','-MyDefaultValues4Vim/plugin/-MyDefaultValues4Vim.vim')
 ```
 
@@ -169,8 +171,11 @@ call plug#begin()
 Plug 'cbushdor/-MyDefaultValues4Vim'
 call plug#end()
 
+" Set  g:my_auto_DeleteTrailingWS to true to delete trailing White Space in .txt file
+let g:my_auto_DeleteTrailingWS=true
+
 " We load plugin
-call StartsLoading('~/.vim/plugged/','-MyDefaultValues4Vim')
+call StartsLoading('~/.vim/plugged/','-MyDefaultValues4Vim/plugin/-MyDefaultValues4Vim.vim')
 ```
 
 # Modules

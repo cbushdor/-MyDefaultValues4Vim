@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-06-02 22:26:16
+* Last Modified : 2023-06-02 22:34:40
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.52
+* Version : 0.0.0.54
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -122,6 +122,10 @@ Create a ~/.vimrc file (if you don't have one already), and enter this text:
 call plug#begin()
 Plug 'cbushdor/-MyDefaultValues4Vim'
 call plug#end()
+
+" Set  g:my_auto_DeleteTrailingWS to true to delete trailing White Space in .txt file
+let g:my_auto_DeleteTrailingWS=true
+call StartsLoading('~/.vim/plugged/','-MyDefaultValues4Vim/plugin/-MyDefaultValues4Vim.vim')
 ```
 
 Each time you want to install a plugin, you must enter the name and location of the plugin between the **plug#begin()** and **plug#end** lines.

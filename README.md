@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-06-03 19:07:43
+* Last Modified : 2023-06-03 22:50:27
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.63
+* Version : 0.0.0.73
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -152,6 +152,24 @@ To update type one of those comands:
 # An issue met
 I noticed that, when a plugin is installed, within *.vimrc* we cannot access nor function(s) or some values defined from withing this new pluggin installed... 
 May be I am new to vim scripting?
+
+# New feature
+
+We enhanced the script. For now, it is strictly recommended that you create a file that contains the script. Here we created  *DeleteTrailingWS_txt* file name and its content:
+
+```
+function! DeleteTrailingWS()
+	exe "normal! mz"
+	%s/\s\+$//ge
+	exe "normal! 'z"
+endfunction
+```
+
+and to allow this script to be executed we put a variable/memory in *~/.vimrc* that has the format *g:my_auto_< filename >* (without *_txt*):
+
+```
+let g:my_auto_DeleteTrailingWS=true
+```
 
 # A final configuration:
 

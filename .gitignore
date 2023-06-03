@@ -4,6 +4,7 @@
 *.tmp
 *~
 .pause
+/.pause
 /.build
 /.tidyall.d
 /Build

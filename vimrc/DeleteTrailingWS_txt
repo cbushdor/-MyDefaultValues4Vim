@@ -1,0 +1,6 @@
+echo "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::+++++>Launch tobe alive"
+function! DeleteTrailingWS()
+	exe "normal! mz"
+	%s/\s\+$//ge
+	exe "normal! 'z"
+endfunction

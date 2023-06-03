@@ -1,3 +1,14 @@
+" ------------------------------------------------------
+" Created By :  
+" File Name :
+" Creation Date :2023-06-03 19:04:18
+" Last Modified :
+" Email Address :  
+" Version : 0.0.0.0
+" License:
+" Purpose :
+" ------------------------------------------------------
+
 echo "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::+++++>Launch tobe alive"
 function! DeleteTrailingWS()
 	exe "normal! mz"

@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : locallib.vim
 " Creation Date :1970-01-01 00:59:59
-" Last Modified : 2023-06-05 21:18:59
+" Last Modified : 2023-06-05 23:53:39
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.8
+" Version : 0.0.0.22
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -44,13 +44,14 @@ function! CheckValue(myvar)
 			endif
 			return get(p,r[1]) " we return content of memory passed
 		else " we know that mem does not exists 
-			"echo "this i here"
-			call MyRaiseError(a:myvar.." is not declared properly! You'd better read :help internal-variables.")
+			call MyRaiseError(a:myvar.." is not declared properly! You'd better read :help internal-variables.",ERROR_DECLARATION)
 			return g:false
 		endif
 		return g:false
-	catch
-		echom "CheckValue::ERROR: " .. v:exception
+	catch /ERROR_DECLARATION/
+		echom expand("%").."::"..expand("<sfile>:t").."(" ..a:myvar .. ")"
+		echom v:exception
+		"echom expand("%").."::"..expand("<sfile>:t").."::" .. v:exception .. " "..a:myvar
 		q
 	endtry
 endfunction

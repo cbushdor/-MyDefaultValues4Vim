@@ -2,14 +2,20 @@
 " Created By : sdo
 " File Name : locallib.vim
 " Creation Date :1970-01-01 00:59:59
-" Last Modified : 2023-06-05 23:53:39
+" Last Modified : 2023-06-06 04:09:19
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.22
+" Version : 0.0.0.23
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
 " Purpose :
 " ------------------------------------------------------
+
+if exists("g:locallib_vim")
+	finish
+endif
+
+let g:locallib_vim=1
 
 function! MyRaiseError(...)
 	echoerr a:0

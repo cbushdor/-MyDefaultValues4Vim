@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : locallib.vim
 " Creation Date :1970-01-01 00:59:59
-" Last Modified : 2023-06-06 04:09:19
+" Last Modified : 2023-06-08 01:45:55
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.23
+" Version : 0.0.0.50
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -17,9 +17,9 @@ endif
 
 let g:locallib_vim=1
 
-function! MyRaiseError(...)
-	echoerr a:0
-	throw a:1 
+function! MyRaiseError(m,e)
+	echoerr a:m
+	throw a:e 
 endfunction
 
 function! CheckValue(myvar)
@@ -50,14 +50,16 @@ function! CheckValue(myvar)
 			endif
 			return get(p,r[1]) " we return content of memory passed
 		else " we know that mem does not exists 
-			call MyRaiseError(a:myvar.." is not declared properly! You'd better read :help internal-variables.",ERROR_DECLARATION)
+			"call MyRaiseError(a:myvar.." is not declared properly! You'd better read :help internal-variables.",ERROR_DECLARATION)
+			call MyRaiseError(a:myvar.." is not declared properly! You'd better read :help internal-variables.",a:myvar)
+			"call MyRaiseError(a:myvar.." is not declared properly! You'd better read :help internal-variables.",a:myvar)
 			return g:false
 		endif
 		return g:false
-	catch /ERROR_DECLARATION/
-		echom expand("%").."::"..expand("<sfile>:t").."(" ..a:myvar .. ")"
-		echom v:exception
-		"echom expand("%").."::"..expand("<sfile>:t").."::" .. v:exception .. " "..a:myvar
+	catch /.*/
+		echo v:exception
+		"echom expand("%").."::"..expand("<sfile>:t")
+		echo "Why don't you declare it in ~/.vimrc s.a ".. "let "..a:myvar.."=false"
 		q
 	endtry
 endfunction

@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-06-03 23:39:23
+* Last Modified : 2023-06-08 21:28:59
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.76
+* Version : 0.0.0.78
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -57,54 +57,6 @@ We can create for instance a file *~/.myvimrc* that contains:
 ```
 let g:true = 1
 let g:false = 0
-
-function! MyRaiseError(mess)
-	echoerr(a:mess)
-endfunction
-
-function! CheckValue(myvar)
-	try
-		if !exists("g:true") " We check if g:true exists
-			call MyRaiseError("o:true does not exist!")
-		endif
-		if !exists("g:false") " We check if g:false exists
-			call MyRaiseError("g:false does not exist!")
-		endif
-
-		let d =  exists(a:myvar) " Variable detected
-
-		"echo "============>"..a:myvar.." detected!"
-		if d " memory exists we check if extension exists to return content of memory
-			let r = split(a:myvar,':')
-			if r[0] == 'g' " Scope is g
-				let p = g:
-			elseif r[0] == 's' " Scope is s
-				let p = s:
-			elseif r[0] == 'l' " Scope is l 
-				let p = l:
-			elseif r[0] == 'w' " Scope is w 
-				let p = w:
-			elseif r[0] == 'b' " Scope is b 
-				let p = b:
-			elseif r[0] == 't' " Scope is t 
-				let p = t:
-			elseif r[0] == 'v' " Scope is v 
-				let p = v:
-			elseif r[0] == 'a' " Scope is a 
-				let p = a:
-			else " no scope but memory exists
-				call MyRaiseError(a:myvar.." error! You'd better read :help internal-variables.")
-			endif
-			return get(p,r[1]) " we return content of memory passed
-		else " we know that mem does not exists 
-			call MyRaiseError(a:myvar.." is not declared properly! You'd better read :help internal-variables.")
-			return g:false
-		endif
-		return g:false
-	catch
-		echom "ERROR: " .. v:exception
-	endtry
-endfunction
 ```
 
 ## Installing this plugin with vim-plug

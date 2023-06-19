@@ -2,14 +2,16 @@
 " Created By : sdo
 " File Name : locallib.vim
 " Creation Date :1970-01-01 00:59:59
-" Last Modified : 2023-06-08 01:45:55
+" Last Modified : 2023-06-19 23:32:18
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.50
+" Version : 0.0.0.205
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
 " Purpose :
 " ------------------------------------------------------
+
+"let $MYENV="/Users/sdo/Downloads/tests/ttttt/event.log"
 
 if exists("g:locallib_vim")
 	finish
@@ -17,11 +19,54 @@ endif
 
 let g:locallib_vim=1
 
+" We raise an error with this function
 function! MyRaiseError(m,e)
 	echoerr a:m
 	throw a:e 
 endfunction
 
+" Prompt a question
+function! Confirm(msg,...)
+	echo a:msg . ' '
+
+	let l:answer = nr2char(getchar())
+
+	if l:answer ==? 'y'
+		return g:true
+	elseif l:answer ==? 'n'
+		return g:false
+	else
+		echo 'Please enter "y" or "n"'
+		return Confirm(a:msg)
+	endif
+endfunction
+
+" We use this to print a string with regexp
+:function! s:printsNew(mess)
+	: return a:mess
+:endfunction
+
+" We create a new line with message in file
+function! Mylog(message, file)
+	try
+		let $FI=expand("%") " Current file name
+		let $MYENV=a:file " File that s.a ~/.vimrc
+
+		:e  $MYENV
+		/call StartsLoading
+		:.s/\(call\)/\= s:printsNew(a:message."\r".submatch(1))/
+		:w
+		:e $FI
+		return g:true
+	catch /.*/
+		echo v:exception
+		echo "Why don't you declare: call StartsLoading(...) in ~/.vimrc"
+		q
+	endtry
+endfun
+
+
+" We check if variables are set in order to allow or not exxecution of module
 function! CheckValue(myvar)
 	try
 		let d =  exists(a:myvar) " Variable detected
@@ -50,10 +95,20 @@ function! CheckValue(myvar)
 			endif
 			return get(p,r[1]) " we return content of memory passed
 		else " we know that mem does not exists 
-			"call MyRaiseError(a:myvar.." is not declared properly! You'd better read :help internal-variables.",ERROR_DECLARATION)
-			call MyRaiseError(a:myvar.." is not declared properly! You'd better read :help internal-variables.",a:myvar)
-			"call MyRaiseError(a:myvar.." is not declared properly! You'd better read :help internal-variables.",a:myvar)
-			return g:false
+			let l:answ = Confirm("Variable "..a:myvar.." does not exists. Would you like to set one in ~/.vimrc [y/n]?")
+			"	echo "------------------------->"..answ
+			if l:answ == g:false 
+				call MyRaiseError(a:myvar.." is not declared properly! You'd better read :help internal-variables.",a:myvar)
+				"return g:false
+			else
+				let l:answ = Confirm("let "..a:myvar.."=true in ~/.vimrc [y/n]?")
+				"		echo "We will set variable in ~/.vimrc"
+				let l:myans = l:answ == g:false ? "g:false" : "g:true"
+				"call Mylog("let "..a:myvar.."="..l:myans, "/Users/sdo/Downloads/tests/ttttt/event.log")
+				call Mylog("let "..a:myvar.."="..l:myans, "/Users/sdo/.vimrc")
+				"		echo "ok"
+				return l:answ
+			endif
 		endif
 		return g:false
 	catch /.*/

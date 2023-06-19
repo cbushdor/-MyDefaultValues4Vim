@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : locallib.vim
 " Creation Date :1970-01-01 00:59:59
-" Last Modified : 2023-06-19 23:32:18
+" Last Modified : 2023-06-20 01:04:43
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.205
+" Version : 0.0.0.221
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -52,8 +52,17 @@ function! Mylog(message, file)
 		let $FI=expand("%") " Current file name
 		let $MYENV=a:file " File that s.a ~/.vimrc
 
+		" :e  $MYENV we load file
+		" /call StartsLoading/ for every line matching "call StartsLoading"
+		" normal execute the following in normal mode
+		" 2n find the second ocurrence of the pattern
+		" gn select it
+		" :w we write changes
+		" :e $FI we load asked file
+		" in case we can raise and error message
+
 		:e  $MYENV
-		/call StartsLoading
+		g/call StartsLoading/normal 2ngn
 		:.s/\(call\)/\= s:printsNew(a:message."\r".submatch(1))/
 		:w
 		:e $FI

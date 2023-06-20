@@ -16,11 +16,8 @@ if exists("g:base_txt")
 endif
 let g:base_txt=1
 
-echo "hhhhhhhhhhhhhhhhhhhhhhh>"..expand("%").."..."..expand("<sfile>:t")
-let g:monster = 1
-
 if exists("my_auto_indent")
-	echo "We detectect variable my_auto_indent"
+	echo expand("<sfile>:t")..": We detectect variable my_auto_indent"
 else
-	echo "We didn't detectect variable my_auto_indent"
+	echo expand("<sfile>:t")..": We didn't detectect variable my_auto_indent"
 endif

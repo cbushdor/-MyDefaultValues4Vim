@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : locallib.vim
 " Creation Date :1970-01-01 00:59:59
-" Last Modified : 2023-06-20 01:04:43
+" Last Modified : 2023-06-29 01:07:42
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.221
+" Version : 0.0.0.448
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -18,6 +18,24 @@ if exists("g:locallib_vim")
 endif
 
 let g:locallib_vim=1
+
+" Search for a commen
+function! MySearch(file,mysearch,mln)
+	let l:fiCon= readfile(a:file,getftype(a:file))
+	let ln = 0
+	let myStop = -1
+	for l in l:fiCon
+		let str = l:fiCon[ln]
+		if l =~ a:mysearch
+			let myStop = ln + a:mln
+		endif
+		if ln == myStop
+			return substitute(l,'\v^[^\ ]+\ +','','g')
+		endif
+		let ln += 1
+	endfor
+	return ""
+endfunction
 
 " We raise an error with this function
 function! MyRaiseError(m,e)
@@ -63,7 +81,7 @@ function! Mylog(message, file)
 
 		:e  $MYENV
 		g/call StartsLoading/normal 2ngn
-		:.s/\(call\)/\= s:printsNew(a:message."\r".submatch(1))/
+		:.s/\(call\)/\= s:printsNew($COMMENT."\r".a:message."\r".submatch(1))/
 		:w
 		:e $FI
 		return g:true
@@ -72,15 +90,15 @@ function! Mylog(message, file)
 		echo "Why don't you declare: call StartsLoading(...) in ~/.vimrc"
 		q
 	endtry
-endfun
+endfunction
 
 
 " We check if variables are set in order to allow or not exxecution of module
-function! CheckValue(myvar)
+function! CheckValue(myvar,file)
 	try
 		let d =  exists(a:myvar) " Variable detected
 
-		"echo "============>"..a:myvar.." detected! "..d
+		echo "============>"..a:myvar.." detected! "
 		if d " Memory exists we check if extension exists to return content of memory
 			let r = split(a:myvar,':')
 			if r[0] == 'g' " Scope is g
@@ -111,10 +129,16 @@ function! CheckValue(myvar)
 				"return g:false
 			else
 				let l:answ = Confirm("let "..a:myvar.."=true in ~/.vimrc [y/n]?")
-				"		echo "We will set variable in ~/.vimrc"
 				let l:myans = l:answ == g:false ? "g:false" : "g:true"
-				"call Mylog("let "..a:myvar.."="..l:myans, "/Users/sdo/Downloads/tests/ttttt/event.log")
-				call Mylog("let "..a:myvar.."="..l:myans, "/Users/sdo/.vimrc")
+
+				" We found a comment to put before the new variable in 
+				" ~/.vimrc if it exists
+				"let comment = MySearch(expand('%'),'Purpose',1)
+				let comment = MySearch(a:file,'Purpose',1)
+				if strlen(comment) > 0
+					let comment = '" '..comment.."\r"
+				endif
+				call Mylog(comment.."let "..a:myvar.."="..l:myans, "/Users/sdo/.vimrc")
 				"		echo "ok"
 				return l:answ
 			endif

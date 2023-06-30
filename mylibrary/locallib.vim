@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : locallib.vim
 " Creation Date :1970-01-01 00:59:59
-" Last Modified : 2023-06-29 01:07:42
+" Last Modified : 2023-06-30 17:13:45
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.448
+" Version : 0.0.0.478
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -44,18 +44,22 @@ function! MyRaiseError(m,e)
 endfunction
 
 " Prompt a question
-function! Confirm(msg,...)
-	echo a:msg . ' '
+function! Confirm(msg,cho)
+	let l:cho = split(a:cho,',')
+	echo a:msg .. ' ['..toupper(l:cho[0])..l:cho[1]..']?'
 
-	let l:answer = nr2char(getchar())
+	let l:answer = tolower(nr2char(getchar()))
 
-	if l:answer ==? 'y'
+	if l:answer ==? "\n"
+		let l:answer = l:cho[0]
+	endif
+	if l:answer ==? l:cho[0]
 		return g:true
-	elseif l:answer ==? 'n'
+	elseif l:answer ==?  l:cho[1]
 		return g:false
 	else
-		echo 'Please enter "y" or "n"'
-		return Confirm(a:msg)
+		echo 'Default value is taken!'
+		return g:true
 	endif
 endfunction
 
@@ -81,7 +85,8 @@ function! Mylog(message, file)
 
 		:e  $MYENV
 		g/call StartsLoading/normal 2ngn
-		:.s/\(call\)/\= s:printsNew($COMMENT."\r".a:message."\r".submatch(1))/
+		":.s/\(call\)/\= s:printsNew($COMMENT."\r".a:message."\r".submatch(1))/
+		:.s/\(call\)/\= s:printsNew("\r".a:message."\r".submatch(1))/
 		:w
 		:e $FI
 		return g:true
@@ -98,7 +103,7 @@ function! CheckValue(myvar,file)
 	try
 		let d =  exists(a:myvar) " Variable detected
 
-		echo "============>"..a:myvar.." detected! "
+		"echo "============>"..a:myvar.." detected! "
 		if d " Memory exists we check if extension exists to return content of memory
 			let r = split(a:myvar,':')
 			if r[0] == 'g' " Scope is g
@@ -122,26 +127,18 @@ function! CheckValue(myvar,file)
 			endif
 			return get(p,r[1]) " we return content of memory passed
 		else " we know that mem does not exists 
-			let l:answ = Confirm("Variable "..a:myvar.." does not exists. Would you like to set one in ~/.vimrc [y/n]?")
-			"	echo "------------------------->"..answ
-			if l:answ == g:false 
-				call MyRaiseError(a:myvar.." is not declared properly! You'd better read :help internal-variables.",a:myvar)
-				"return g:false
-			else
-				let l:answ = Confirm("let "..a:myvar.."=true in ~/.vimrc [y/n]?")
-				let l:myans = l:answ == g:false ? "g:false" : "g:true"
+			let l:answ = Confirm("Variable "..a:myvar.." does not exists. Would you like to set it as let "..a:myvar.."=true in ~/.vimrc ","y,n")
+			let l:myans = (l:answ == g:true) ? "g:true" : "g:false"
 
-				" We found a comment to put before the new variable in 
-				" ~/.vimrc if it exists
-				"let comment = MySearch(expand('%'),'Purpose',1)
-				let comment = MySearch(a:file,'Purpose',1)
-				if strlen(comment) > 0
-					let comment = '" '..comment.."\r"
-				endif
-				call Mylog(comment.."let "..a:myvar.."="..l:myans, "/Users/sdo/.vimrc")
-				"		echo "ok"
-				return l:answ
+			" We found a comment to put before the new variable in 
+			" ~/.vimrc if it exists
+			"let comment = MySearch(expand('%'),'Purpose',1)
+			let comment = MySearch(a:file,'Purpose',1)
+			if strlen(comment) > 0
+				let comment = ' " '..comment
 			endif
+			call Mylog("let "..a:myvar.."="..l:myans..comment, "/Users/sdo/.vimrc")
+			"		echo "ok"
 		endif
 		return g:false
 	catch /.*/

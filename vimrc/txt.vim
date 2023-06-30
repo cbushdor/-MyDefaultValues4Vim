@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : txt.vim
 " Creation Date :1970-01-01 00:59:59
-" Last Modified : 2023-06-29 01:07:54
+" Last Modified : 2023-06-30 15:50:10
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.578
+" Version : 0.0.0.579
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.

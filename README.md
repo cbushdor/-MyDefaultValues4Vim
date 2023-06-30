@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-06-08 21:28:59
+* Last Modified : 2023-06-30 18:02:25
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.78
+* Version : 0.0.0.84
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -120,8 +120,10 @@ endfunction
 and to allow this script to be executed we put a variable/memory in *~/.vimrc* that has the format *g:my_auto_< filename >* (without *_txt*):
 
 ```
-let g:my_auto_DeleteTrailingWS=true
+let g:my_auto_DeleteTrailingWS=g:true
 ```
+
+For the time being this feature can be done *by hand* or when you open a file. There is a question asked for each new pluggin installed (or as long as *g:my_auto_< filename >* is not found in ~/.vimrc for instance). Possible values are g:true for true or g:false for false. The value true load the module, false ignore it. It is mandatory to have that..
 
 # A final configuration:
 
@@ -142,7 +144,7 @@ Plug 'cbushdor/-MyDefaultValues4Vim'
 call plug#end()
 
 " Set  g:my_auto_DeleteTrailingWS to true to delete trailing White Space in .txt file
-let g:my_auto_DeleteTrailingWS=true
+let g:my_auto_DeleteTrailingWS=g:true
 
 " We load plugin
 call StartsLoading('~/.vim/plugged/','-MyDefaultValues4Vim/plugin/-MyDefaultValues4Vim.vim')

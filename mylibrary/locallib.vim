@@ -2,16 +2,14 @@
 " Created By : sdo
 " File Name : locallib.vim
 " Creation Date :1970-01-01 00:59:59
-" Last Modified : 2023-06-30 17:13:45
+" Last Modified : 2023-07-03 01:37:39
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.478
+" Version : 0.0.0.499
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
 " Purpose :
 " ------------------------------------------------------
-
-"let $MYENV="/Users/sdo/Downloads/tests/ttttt/event.log"
 
 if exists("g:locallib_vim")
 	finish
@@ -30,7 +28,7 @@ function! MySearch(file,mysearch,mln)
 			let myStop = ln + a:mln
 		endif
 		if ln == myStop
-			return substitute(l,'\v^[^\ ]+\ +','','g')
+			return substitute(l,'\v^[^\ ]+[\-\ ]+','','g')
 		endif
 		let ln += 1
 	endfor
@@ -71,22 +69,14 @@ endfunction
 " We create a new line with message in file
 function! Mylog(message, file)
 	try
-		let $FI=expand("%") " Current file name
+		let $FI=g:toLoad " Current file name
+		"let $FI= "*."..expand("<sfile>:t:r")
 		let $MYENV=a:file " File that s.a ~/.vimrc
 
+		echo "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx>"..$FI
 		" :e  $MYENV we load file
-		" /call StartsLoading/ for every line matching "call StartsLoading"
-		" normal execute the following in normal mode
-		" 2n find the second ocurrence of the pattern
-		" gn select it
-		" :w we write changes
-		" :e $FI we load asked file
-		" in case we can raise and error message
-
 		:e  $MYENV
-		g/call StartsLoading/normal 2ngn
-		":.s/\(call\)/\= s:printsNew($COMMENT."\r".a:message."\r".submatch(1))/
-		:.s/\(call\)/\= s:printsNew("\r".a:message."\r".submatch(1))/
+		:$s/^/\= s:printsNew(a:message)/
 		:w
 		:e $FI
 		return g:true
@@ -103,8 +93,9 @@ function! CheckValue(myvar,file)
 	try
 		let d =  exists(a:myvar) " Variable detected
 
-		"echo "============>"..a:myvar.." detected! "
+		echo "============>"..a:myvar.." trying to be detected! "
 		if d " Memory exists we check if extension exists to return content of memory
+			echon "---> ok detected"
 			let r = split(a:myvar,':')
 			if r[0] == 'g' " Scope is g
 				let p = g:
@@ -122,12 +113,12 @@ function! CheckValue(myvar,file)
 				let p = v:
 			elseif r[0] == 'a' " Scope is a 
 				let p = a:
-			else " no scope but memory exists
+			else " No scope but memory exists
 				call MyRaiseError(a:myvar.." error! You'd better read :help internal-variables.")
 			endif
-			return get(p,r[1]) " we return content of memory passed
-		else " we know that mem does not exists 
-			let l:answ = Confirm("Variable "..a:myvar.." does not exists. Would you like to set it as let "..a:myvar.."=true in ~/.vimrc ","y,n")
+			return get(p,r[1]) " We return content of memory passed
+		else " We know that mem does not exist from here
+			let l:answ = Confirm("Variable "..a:myvar.." does not exists. Would you like to set it as let "..a:myvar.."=true in "..g:pathPlug.." ","y,n")
 			let l:myans = (l:answ == g:true) ? "g:true" : "g:false"
 
 			" We found a comment to put before the new variable in 
@@ -137,10 +128,14 @@ function! CheckValue(myvar,file)
 			if strlen(comment) > 0
 				let comment = ' " '..comment
 			endif
-			call Mylog("let "..a:myvar.."="..l:myans..comment, "/Users/sdo/.vimrc")
-			"		echo "ok"
+
+			call Mylog("let "..a:myvar.."="..l:myans..comment.."\r", g:pathPlug)
+			" We put in mem
+			execute "source "..g:pathPlug
+			
+			" We check if variable detected
+			call CheckValue(a:myvar,a:file)
 		endif
-		return g:false
 	catch /.*/
 		echo v:exception
 		"echom expand("%").."::"..expand("<sfile>:t")

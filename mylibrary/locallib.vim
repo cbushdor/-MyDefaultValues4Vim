@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : locallib.vim
 " Creation Date :1970-01-01 00:59:59
-" Last Modified : 2023-07-03 01:37:39
+" Last Modified : 2023-07-03 04:37:48
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.499
+" Version : 0.0.0.509
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -66,14 +66,17 @@ endfunction
 	: return a:mess
 :endfunction
 
+function! IfHas(var,mess)
+	return 'if !has("'..a:var..'"'..")\r"..a:mess.."endif\r"
+endfunction
+
 " We create a new line with message in file
 function! Mylog(message, file)
 	try
 		let $FI=g:toLoad " Current file name
-		"let $FI= "*."..expand("<sfile>:t:r")
 		let $MYENV=a:file " File that s.a ~/.vimrc
 
-		echo "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx>"..$FI
+		" echo "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx>"..$FI
 		" :e  $MYENV we load file
 		:e  $MYENV
 		:$s/^/\= s:printsNew(a:message)/
@@ -129,7 +132,7 @@ function! CheckValue(myvar,file)
 				let comment = ' " '..comment
 			endif
 
-			call Mylog("let "..a:myvar.."="..l:myans..comment.."\r", g:pathPlug)
+			call Mylog(IfHas(a:myvar,"let "..a:myvar.."="..l:myans..comment.."\r"), g:pathPlug)
 			" We put in mem
 			execute "source "..g:pathPlug
 			

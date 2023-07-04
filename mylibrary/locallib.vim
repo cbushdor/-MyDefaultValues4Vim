@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : locallib.vim
 " Creation Date :1970-01-01 00:59:59
-" Last Modified : 2023-07-03 04:37:48
+" Last Modified : 2023-07-03 15:29:18
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.509
+" Version : 0.0.0.513
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -16,6 +16,35 @@ if exists("g:locallib_vim")
 endif
 
 let g:locallib_vim=1
+
+if !has("g:true")
+	let g:true = 1
+endif
+
+if !has("g:false")
+	let g:false = 0
+endif
+
+" We load a plug from a given path
+function! StartsLoading(path,plug)
+	let g:pathPlug = a:path.."/"..a:plug
+
+	if !empty(glob(g:pathPlug))
+		execute "source "..g:pathPlug
+		"echo "---->We loaded source "..g:pathPlug
+	else
+		echo "We cannot load source "..g:pathPlug
+			let l:answ = Confirm("Would you like to create "..g:pathPlug,"y,n")
+			if l:answ == g:true
+				echo g:pathPlug.." created..."
+				let $F = g:pathPlug
+				:e $F
+				:w
+			else
+				:q
+			endif
+	endif
+endfunction
 
 " Search for a commen
 function! MySearch(file,mysearch,mln)
@@ -71,7 +100,7 @@ function! IfHas(var,mess)
 endfunction
 
 " We create a new line with message in file
-function! Mylog(message, file)
+function! MyLog(message, file)
 	try
 		let $FI=g:toLoad " Current file name
 		let $MYENV=a:file " File that s.a ~/.vimrc
@@ -132,7 +161,7 @@ function! CheckValue(myvar,file)
 				let comment = ' " '..comment
 			endif
 
-			call Mylog(IfHas(a:myvar,"let "..a:myvar.."="..l:myans..comment.."\r"), g:pathPlug)
+			call MyLog(IfHas(a:myvar,"let "..a:myvar.."="..l:myans..comment.."\r"), g:pathPlug)
 			" We put in mem
 			execute "source "..g:pathPlug
 			

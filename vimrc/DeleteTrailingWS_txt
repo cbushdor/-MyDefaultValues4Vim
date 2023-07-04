@@ -2,13 +2,14 @@
 " Created By : sdo
 " File Name : DeleteTrailingWS_txt
 " Creation Date :2023-06-05 21:37:56
-" Last Modified : 2023-06-21 01:05:00
+" Last Modified : 2023-07-04 17:08:06
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.3
+" Version : 0.0.0.5
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
 " Purpose :
+" 	My comment for DeleteTrailingWS_txt
 " ------------------------------------------------------
 
 if exists("g:DeleteTrailingWS_txt")
@@ -21,3 +22,5 @@ function! DeleteTrailingWS()
 	%s/\s\+$//ge
 	exe "normal! 'z"
 endfunction
+
+autocmd BufWritePre,FileWritePre $FEX  :call DeleteTrailingWS()

@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : txt.vim
 " Creation Date :1970-01-01 00:59:59
-" Last Modified : 2023-07-04 17:07:09
+" Last Modified : 2023-07-04 17:31:04
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.592
+" Version : 0.0.0.593
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -27,7 +27,7 @@ for f in split(glob(s:myLoScPath.."/*_txt"),"\n") " We read the files from this 
 	let confFile = 'g:my_auto_'..file[0] " We take file associated with script name and create environment variable/memory associated
 	let resCheckVal = CheckValue(confFile,f) " We check if variable/memory exists
 
-	echo "+++++++++++++++++++++++++++++++++++++==>"..  resCheckVal .."<--------------------------" .. (resCheckVal == g:false)
+	"echo "+++++++++++++++++++++++++++++++++++++==>"..  resCheckVal .."<--------------------------" .. (resCheckVal == g:false)
 
 	if (resCheckVal == g:false) " We check if variable/memory exists or is equal to false
 	else
@@ -35,7 +35,7 @@ for f in split(glob(s:myLoScPath.."/*_txt"),"\n") " We read the files from this 
 		let fext= "."..expand("%:e") " opened file extension
 		let $FEX= "*."..expand("<sfile>:t:r")
 
-		echo "loading("..f..")   ====>"..confFile.."="
+	"	echo "loading("..f..")   ====>"..confFile.."="
 		echon get(g:,'my_auto_'..file[0]) == g:true ? "true" : "false"
 		if cur == fext
 			" && expand("<sfile>:t:r") == file[1] 

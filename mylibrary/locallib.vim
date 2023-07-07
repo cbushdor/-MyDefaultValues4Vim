@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : locallib.vim
 " Creation Date :1970-01-01 00:59:59
-" Last Modified : 2023-07-03 15:29:18
+" Last Modified : 2023-07-07 16:25:19
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.513
+" Version : 0.0.0.530
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -27,22 +27,24 @@ endif
 
 " We load a plug from a given path
 function! StartsLoading(path,plug)
-	let g:pathPlug = a:path.."/"..a:plug
+	let g:pathPlug = a:path..a:plug
 
+	" If path with file does exist
 	if !empty(glob(g:pathPlug))
-		execute "source "..g:pathPlug
-		"echo "---->We loaded source "..g:pathPlug
+		call LoadSource(g:pathPlug) " We load g:pathPlug
 	else
 		echo "We cannot load source "..g:pathPlug
-			let l:answ = Confirm("Would you like to create "..g:pathPlug,"y,n")
-			if l:answ == g:true
-				echo g:pathPlug.." created..."
-				let $F = g:pathPlug
-				:e $F
-				:w
-			else
-				:q
-			endif
+		let l:answ = Confirm("Would you like to create "..g:pathPlug,"y,n")
+		" We create an empty file
+		if l:answ == g:true
+			echo g:pathPlug.." created..."
+			"let g:restart_loading = 1
+			let $F = g:pathPlug
+			:e $F
+			:w
+		else
+			:q
+		endif
 	endif
 endfunction
 
@@ -75,8 +77,9 @@ function! Confirm(msg,cho)
 	let l:cho = split(a:cho,',')
 	echo a:msg .. ' ['..toupper(l:cho[0])..l:cho[1]..']?'
 
+	call inputsave() " We save input
 	let l:answer = tolower(nr2char(getchar()))
-
+	call inputrestore() " We restore input
 	if l:answer ==? "\n"
 		let l:answer = l:cho[0]
 	endif
@@ -164,7 +167,7 @@ function! CheckValue(myvar,file)
 			call MyLog(IfHas(a:myvar,"let "..a:myvar.."="..l:myans..comment.."\r"), g:pathPlug)
 			" We put in mem
 			execute "source "..g:pathPlug
-			
+
 			" We check if variable detected
 			call CheckValue(a:myvar,a:file)
 		endif

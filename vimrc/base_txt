@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : base_txt
 " Creation Date : 2023-05-08 01:30:12
-" Last Modified : 2023-07-02 18:42:53
+" Last Modified : 2023-07-07 22:11:54
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.14
+" Version : 0.0.0.17
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -13,12 +13,17 @@
 " ------------------------------------------------------
 
 if exists("g:base_txt")
-	finish
+finish
 endif
 let g:base_txt=1
 
 if exists("my_auto_indent")
-	echo expand("<sfile>:t")..": We detectect variable my_auto_indent"
+echo expand("<sfile>:t")..": We detectect variable my_auto_indent"
 else
-	echo expand("<sfile>:t")..": We didn't detectect variable my_auto_indent"
+echo expand("<sfile>:t")..": We didn't detectect variable my_auto_indent"
 endif
+"if has("g:my_auto_base")
+"echo "We know that we have g:my_auto_base set"
+"else
+"echo "We know that we don't have g:my_auto_base set"
+"endif

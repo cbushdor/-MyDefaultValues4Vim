@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : -MyDefaultValues4Vim.vim
 " Creation Date : 2023-05-08 00:22:02
-" Last Modified : 2023-07-07 15:18:13
+" Last Modified : 2023-07-12 15:19:14
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.220
+" Version : 0.0.0.221
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -25,7 +25,8 @@ execute "source  "..expand('<sfile>:p:h').."/../mylibrary/ConfFile_MyDefaultValu
 let g:toLoad=GetsCurrentFileName()  " Current file name to load
 "echo "------------------------->".. g:toLoad
 
-echo "ooooooooooooooooooooooooooo>"..g:local_path_mylibrary
+" echo "ooooooooooooooooooooooooooo>"..g:local_path_mylibrary
+
 " We plug my local library
 call LoadSource(g:local_path_mylibrary.."/locallib.vim")
 

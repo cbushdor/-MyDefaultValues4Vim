@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : locallib.vim
 " Creation Date :1970-01-01 00:59:59
-" Last Modified : 2023-07-07 16:25:19
+" Last Modified : 2023-07-12 15:17:29
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.530
+" Version : 0.0.0.532
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -128,9 +128,9 @@ function! CheckValue(myvar,file)
 	try
 		let d =  exists(a:myvar) " Variable detected
 
-		echo "============>"..a:myvar.." trying to be detected! "
+		"echo "============>"..a:myvar.." trying to be detected! "
 		if d " Memory exists we check if extension exists to return content of memory
-			echon "---> ok detected"
+			"echon "---> ok detected"
 			let r = split(a:myvar,':')
 			if r[0] == 'g' " Scope is g
 				let p = g:

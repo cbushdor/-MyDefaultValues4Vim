@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-07-12 16:16:07
+* Last Modified : 2023-07-12 16:23:02
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.128
+* Version : 0.0.0.130
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -83,7 +83,9 @@ When you open a file, at first time, a prompt will ask you to fill these values 
 let g:my_auto_DeleteTrailingWS=g:true
 ```
 
-For the time being this feature can be done *by hand* or when you open a file. There is a question asked for each new pluggin installed (or as long as *g:my_auto_< filename >* is not found in ~/.vimrc for instance). Possible values are g:true for true or g:false for false. The value true load the module, false ignore it. It is mandatory to have that..
+# How to create an *environment variable name*
+
+For the time being this feature can be done *by hand* or when you open a file. There is a serie of question(s) asked for each new pluggin installed (or as long as *g:my_auto_< filename >* is not found in ~/.vimrc for instance). Possible values are g:true for true or g:false for false. The value true load the module, false ignore it. It is mandatory to have that..
 
 # A final configuration:
 

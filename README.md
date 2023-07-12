@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-07-03 01:59:29
+* Last Modified : 2023-07-12 15:24:47
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.109
+* Version : 0.0.0.110
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -103,6 +103,10 @@ These files were added in *vimrc* directory[^4]. They have *.vim* extenstion. th
 # WATCHOUT
 
 Plugin not finished yet! Subject to change.
+
+# BUG KNOWN
+
+When used first time, if variables are not set, when loadeed after question session variables are loaded but not in mem properly. To avoid issues need to quit and restart vim.
 
 # License
 

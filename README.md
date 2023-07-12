@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-07-12 20:35:05
+* Last Modified : 2023-07-12 20:48:31
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.140
+* Version : 0.0.0.146
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -71,7 +71,7 @@ Wait for the plugins to be downloaded and, installed properly! ;-)
 
 # How to add *a new feature*
 
-We enhanced the script. For now, it is strictly recommended that you create a file that contains the script. Don't mix with this file anymore (s.a i.e ~/.vimrc). Here we created  *DeleteTrailingWS_txt* file name (*_txt is the *file name format* where * is the pluggin name followed by extension *_txt*). Now here is its content:
+We enhanced the script. For now, it is strictly recommended that you create a file that contains the script. Don't mix with this file anymore (s.a i.e ~/.vimrc). Now we created a new pluggin that Delete Trailing White Space in a file. Here is the file name that contains our script:  *DeleteTrailingWS_txt*. That file name respect the following format s.a * *_txt*. The * represents the pluggin name followed by extension *_txt*. Now here is its content:
 
 ```
 function! DeleteTrailingWS()
@@ -117,7 +117,8 @@ When used first time, if variables are not set, when loadeed after question sess
 
 # TODO
 
-Change configuration file name and its path. When you open a file, at first time, a prompt will ask you to fill these values (it will store in *~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC*[^5])  or you can do it by yourself in  *~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC*[^5].
+Change during first time the *path* and *filename* that contain configuration in *~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC*.
+
 # License
 
 Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0)

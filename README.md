@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-07-12 15:24:47
+* Last Modified : 2023-07-12 16:12:42
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.110
+* Version : 0.0.0.125
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -63,11 +63,11 @@ Finally, at command line in vim type:
 :PlugInstall
 ```
 
-Wait for the plugins to be downloaded.
+Wait for the plugins to be downloaded and, installed properly! ;-)
 
 # How to add *a new feature*
 
-We enhanced the script. For now, it is strictly recommended that you create a file that contains the script. Don't mix with this file anymore. Here we created  *DeleteTrailingWS_txt* file name and its content:
+We enhanced the script. For now, it is strictly recommended that you create a file that contains the script. Don't mix with this file anymore (s.a i.e ~/.vimrc). Here we created  *DeleteTrailingWS_txt* file name and its content:
 
 ```
 function! DeleteTrailingWS()
@@ -77,7 +77,8 @@ function! DeleteTrailingWS()
 endfunction
 ```
 
-When you open a file a prompt will ask you to fill these values or you can do it by yourself in  * ~/.vim/plugged/-MyDefaultValues4Vim/vimrc/.myvimrc * .
+When you open a file, at first time, a prompt will ask you to fill these values (it will store in *~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC*[^5])  or you can do it by yourself in  *~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC*[^5].
+
 ```
 let g:my_auto_DeleteTrailingWS=g:true
 ```
@@ -118,3 +119,4 @@ Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0)
 [^2]: How to install [Vim plugin](https://linuxhandbook.com/install-vim-plugins/).
 [^3]: This code was based on [Vim documentation](https://vimdoc.sourceforge.net/).
 [^4]: This is where the vimrc directory is *~/.vim/plugged/-MyDefaultValues4Vim* in our case.
+[^5]: Watch out in the near future it will be possible to configure *path* and *file name* in/from a *configure file*. This configure file will be unique (because it contains all variables that enable or disable by *true* and *false* the new plug).

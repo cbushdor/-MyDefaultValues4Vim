@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-07-12 16:12:42
+* Last Modified : 2023-07-12 16:16:07
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.125
+* Version : 0.0.0.128
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -119,4 +119,4 @@ Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0)
 [^2]: How to install [Vim plugin](https://linuxhandbook.com/install-vim-plugins/).
 [^3]: This code was based on [Vim documentation](https://vimdoc.sourceforge.net/).
 [^4]: This is where the vimrc directory is *~/.vim/plugged/-MyDefaultValues4Vim* in our case.
-[^5]: Watch out in the near future it will be possible to configure *path* and *file name* in/from a *configure file*. This configure file will be unique (because it contains all variables that enable or disable by *true* and *false* the new plug).
+[^5]: **WATCHOUT** in the near future it will be possible to configure *path* and *file name* in/from a *configure file*. This configure file will be unique (because it contains all variables that enable or disable by *true* and *false* the new plug).

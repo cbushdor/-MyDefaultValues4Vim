@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-07-13 17:01:04
+* Last Modified : 2023-07-13 18:47:44
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.177
+* Version : 0.0.0.179
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -111,7 +111,7 @@ These files were added in *~/.vim* directory[^4]. They have *.vim* extenstion. t
 
 Plugin not finished yet! Subject to change and for that it is UNSTABLE!!!!! :-(
 
-# BUG KNOWN
+# BUG KNOWN  \_(ツ)_/
 
 Need to restart editor after new (re)configuration.
 

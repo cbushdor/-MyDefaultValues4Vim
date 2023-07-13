@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-07-13 21:15:02
+* Last Modified : 2023-07-13 21:51:27
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.193
+* Version : 0.0.0.194
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -67,11 +67,11 @@ Finally, at command line in vim type:
 :PlugInstall
 ```
 
-Wait for the plugins to be downloaded and, installed properly! ;-)
+Wait for the plugins to be downloaded and, installed properly!
 
 # How to add a new *script*
 
-From now on, it is *highly* recommended that you create a file (that has a specific format name) that contains the new script. Don't mix/jumble with one of these files anymore (s.a i.e *~/.vimrc*, *$HOME/.vimrc* ... a dog won't find its children otherwise ;-) ) except for install (read *Installing this plugin with vim-plug*). Now we created a new plugin that Delete Trailing White Space in a file. Here is the file name that contains our script:  *DeleteTrailingWS_txt*. That file name respect the following format s.a * *_txt*. The * represents the plugin name followed by extension *_txt*. Now here is its content:
+From now on, it is *highly* recommended that you create a file (that has a specific format name) that contains the new script. Don't mix/jumble with one of these files anymore (s.a i.e *~/.vimrc*, *$HOME/.vimrc* ... a dog won't find its children otherwise) except for install (read *Installing this plugin with vim-plug*). Now we created a new plugin that Delete Trailing White Space in a file. Here is the file name that contains our script:  *DeleteTrailingWS_txt*. That file name respect the following format s.a * *_txt*. The * represents the plugin name followed by extension *_txt*. Now here is its content:
 
 ```
 function! DeleteTrailingWS()
@@ -109,7 +109,7 @@ These files were added in *~/.vim* directory[^4]. They have *.vim* extenstion. t
 
 # WATCHOUT
 
-Plugin not finished yet! Subject to change and for that it is UNSTABLE!!!!! :-(
+Plugin not finished yet! Subject to change and for that it is UNSTABLE!!!!!
 
 # BUG KNOWN
 

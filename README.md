@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-07-13 16:58:50
+* Last Modified : 2023-07-13 17:01:04
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.175
+* Version : 0.0.0.177
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -113,7 +113,7 @@ Plugin not finished yet! Subject to change and for that it is UNSTABLE!!!!! :-(
 
 # BUG KNOWN
 
-When used first time, if variables are not set, when loadeed after question session variables are loaded but not in mem properly. To avoid issues need to quit and restart vim.
+Need to restart editor after new (re)configuration.
 
 # TODO
 

@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-07-13 18:51:34
+* Last Modified : 2023-07-13 18:59:02
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.185
+* Version : 0.0.0.190
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -107,7 +107,7 @@ These files were added in *~/.vim* directory[^4]. They have *.vim* extenstion. t
 * DeleteTailingWS.vim: delete tring white spaces when file is save *:w* for i.e.	
 
 
-# WATCHOUT
+# WATCHOUT <-  ✌(ツ)
 
 Plugin not finished yet! Subject to change and for that it is UNSTABLE!!!!! :-(
 
@@ -115,7 +115,7 @@ Plugin not finished yet! Subject to change and for that it is UNSTABLE!!!!! :-(
 
 Need to restart editor after new (re)configuration.
 
-# TODO
+# TODO <- ¯\\\(°_o)/¯
 
 - During first install in *~/.vim/plugged/-MyDefaultValues4Vim/vimrc*, the *path* and *filename* that contain configuration can be configured.
 

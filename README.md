@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-07-12 20:48:31
+* Last Modified : 2023-07-13 15:15:17
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.146
+* Version : 0.0.0.163
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -69,9 +69,9 @@ Finally, at command line in vim type:
 
 Wait for the plugins to be downloaded and, installed properly! ;-)
 
-# How to add *a new feature*
+# How to add a new *script*
 
-We enhanced the script. For now, it is strictly recommended that you create a file that contains the script. Don't mix with this file anymore (s.a i.e ~/.vimrc). Now we created a new pluggin that Delete Trailing White Space in a file. Here is the file name that contains our script:  *DeleteTrailingWS_txt*. That file name respect the following format s.a * *_txt*. The * represents the pluggin name followed by extension *_txt*. Now here is its content:
+From now on, it is *highly* recommended that you create a file (that has a specific format name) that contains the new script. Don't mix/jumble with one of these files anymore (s.a i.e *~/.vimrc*, *$HOME/.vimrc* ... a dog won't find its children otherwise ;-) ) except for install (read *Installing this plugin with vim-plug*). Now we created a new plugin that Delete Trailing White Space in a file. Here is the file name that contains our script:  *DeleteTrailingWS_txt*. That file name respect the following format s.a * *_txt*. The * represents the plugin name followed by extension *_txt*. Now here is its content:
 
 ```
 function! DeleteTrailingWS()
@@ -81,7 +81,7 @@ function! DeleteTrailingWS()
 endfunction
 ```
 
-When you open a file, at first time or when you had a new pluggin, in *~/.vim/plugged/-MyDefaultValues4Vim/vimrc/\*_txt* , a prompt will ask you to fill these values (it will store in *~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC*[^5])  or you can do it by yourself in  *~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC*[^5].
+When you open a file, at first time or when you had a new plugin, in *~/.vim/plugged/-MyDefaultValues4Vim/vimrc/\*_txt* , a prompt will ask you to fill these values (it will store in *~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC*[^5])  or you can do it by yourself in  *~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC*[^5].
 
 ```
 let g:my_auto_DeleteTrailingWS=g:true
@@ -89,7 +89,7 @@ let g:my_auto_DeleteTrailingWS=g:true
 
 # How to create an *environment variable name*
 
-For the time being this feature can be done *by hand* or when you open a file. There is a serie of question(s) asked for each new pluggin installed (or as long as *g:my_auto_< filename >* is not found in ~/.vimrc for instance). Possible values are g:true for true or g:false for false. The value true load the module, false ignore it. It is mandatory to have that..
+For the time being this feature can be done *by hand* or when you open a file. There is a serie of question(s) asked for each new plugin installed (or as long as *g:my_auto_< filename >* is not found in ~/.vimrc for instance). Possible values are g:true for true or g:false for false. The value true load the module, false ignore it. It is mandatory to have that..
 
 # A final configuration:
 

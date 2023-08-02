@@ -2,20 +2,20 @@
 " Created By : sdo
 " File Name : locallib.vim
 " Creation Date :1970-01-01 00:59:59
-" Last Modified : 2023-07-12 15:17:29
+" Last Modified : 2023-08-02 02:01:00
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.532
+" Version : 0.0.0.592
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
 " Purpose :
 " ------------------------------------------------------
 
-if exists("g:locallib_vim")
+if exists("g:MyDefaultValues4Vim_locallib_vim")
 	finish
 endif
 
-let g:locallib_vim=1
+let g:MyDefaultValues4Vim_locallib_vim=1
 
 if !has("g:true")
 	let g:true = 1
@@ -43,6 +43,21 @@ function! StartsLoading(path,plug)
 			:e $F
 			:w
 		else
+			let l:answ = Confirm("Would you like to reset "..g:pathPlug,"y,n")
+			if l:answ == g:true
+				echo "homedir: "..g:local_path_homedir.." + path: mydirs/myConfFile"
+				echo "Enter new path s.a mydirs/myConfFile (only)"
+				let l:answ = Confirm("")
+				let r = split(l:answ,'/')
+				for i in r
+					echo "===========>"..i
+				endfor
+				let l:new_path="/"..join(r[0:(len(r)-2)],'/')
+				echo "We will change it"
+				echo "(path,file)=("..l:new_path..","..r[(len(r)-1)]..")"
+				let varEnv = LoadGlobVar("MyDefaultValues4Vim_")
+				let varEnv = LoadGlobVar("my_auto_")
+			endif
 			:q
 		endif
 	endif
@@ -73,23 +88,34 @@ function! MyRaiseError(m,e)
 endfunction
 
 " Prompt a question
-function! Confirm(msg,cho)
-	let l:cho = split(a:cho,',')
-	echo a:msg .. ' ['..toupper(l:cho[0])..l:cho[1]..']?'
+" function! Confirm(msg,cho)
+function! Confirm(...)
+	if a:0 == 2
+		let msg = a:1 " Message / Sentence asked
+		let chol = a:2 " Choice list
+		let l:cho = split(chol,',')
+		echo msg .. ' ['..toupper(l:cho[0])..l:cho[1]..']?'
 
-	call inputsave() " We save input
-	let l:answer = tolower(nr2char(getchar()))
-	call inputrestore() " We restore input
-	if l:answer ==? "\n"
-		let l:answer = l:cho[0]
-	endif
-	if l:answer ==? l:cho[0]
-		return g:true
-	elseif l:answer ==?  l:cho[1]
-		return g:false
+		call inputsave() " We save input
+		let l:answer = tolower(nr2char(getchar()))
+		call inputrestore() " We restore input
+		if l:answer ==? "\n"
+			let l:answer = l:cho[0]
+		endif
+		if l:answer ==? l:cho[0]
+			return g:true
+		elseif l:answer ==?  l:cho[1]
+			return g:false
+		else
+			echo 'Default value is taken!'
+			return g:true
+		endif
 	else
-		echo 'Default value is taken!'
-		return g:true
+		let msg = a:1 " Message / Sentence asked
+		call inputsave() " We save input
+		let l:answer = input("azaeazeaeaa",g:local_path_homedir)
+		call inputrestore() " We restore input
+		return g:local_path_homedir..l:answer
 	endif
 endfunction
 

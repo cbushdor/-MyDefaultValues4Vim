@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-07-16 18:12:18
+* Last Modified : 2023-08-10 00:12:30
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.196
+* Version : 0.0.0.131
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -30,6 +30,12 @@
 
 ## Installing this plugin with vim-plug
 
+**Prequisites**
+
+You must have git installed!
+
+The following was adapted from [this](https://github.com/junegunn/vim-plug).
+
 **Install vim-plug so that it auto-loads at launch with:**
 
 ```
@@ -39,87 +45,82 @@ $ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 Create a ~/.vimrc file (if you don't have one already), and enter this text:
 
->***Note***
->
-> *~/* and *$HOME/* have the same meanings. They represent the *home directory* path.
-
 ```
 call plug#begin()
 Plug 'cbushdor/-MyDefaultValues4Vim'
 call plug#end()
-
 ```
 
-then exit from vim and *vim ~/.vimrc* or at command line type:
+Each time you want to install a plugin, you must enter the name and location of the plugin between the **plug#begin()** and **plug#end** lines.
 
-```
-:source %
-```
+If the plugin you want isn't hosted on GitHub, then you can provide the full URL instead of just the GitHub username and project ID. You can even "install" local plugins outside of your ~/.vim directory.
 
-or
-
-```
-:so %
-```
-
-Finally, at command line in vim type:
+Finally, start Vim and prompt vim-plug to install the plugins listed in ~/.vimrc:
 ```
 :PlugInstall
 ```
 
-Wait for the plugins to be downloaded and, installed properly!
+Wait for the plugins to be downloaded.
 
-# How to add a new *script*
+To update type one of those comands:
+```
+:PlugUpdate
+```
+```
+:PlugUpdate -MyDefaultValues4Vim
+```
 
-From now on, it is *highly* recommended that you create a file (that has a specific format name) that contains the new script. Don't mix/jumble with one of these files anymore (s.a i.e *~/.vimrc*, *$HOME/.vimrc* ... a dog won't find its children otherwise) except for install (read *Installing this plugin with vim-plug*). Now we created a new plugin that Delete Trailing White Space in a file. Here is the file name that contains our script:  *DeleteTrailingWS_txt*. That file name respect the following format s.a * *_txt*. The * represents the plugin name followed by extension *_txt*. Now here is its content:
+# How to add *a new feature* within plugin
+
+We are in the script name **DeleteTrailingWS_txt** stored in *~/.vim/plugged/-MyDefaultValues4Vim/vimrc*.
+At the begining of this script we need to add this:
 
 ```
+if !MyDefine('DeleteTrailingWS_txt')
+	finish
+endif
+```
+
+Just below, we created  *DeleteTrailingWS_txt* file name and its content:
+
+```
+if !MyDefine('DeleteTrailingWS_txt')
+	finish
+endif
+
 function! DeleteTrailingWS()
 	exe "normal! mz"
 	%s/\s\+$//ge
 	exe "normal! 'z"
 endfunction
+
+autocmd BufWritePre,FileWritePre *.txt :call DeleteTrailingWS()
 ```
 
-When you open a file, at first time or when you had a new plugin, in *~/.vim/plugged/-MyDefaultValues4Vim/vimrc/\*_txt* , a prompt will ask you to fill these values (it will store in *~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC*[^5])  or you can do it by yourself in  *~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC*[^5].
+The **MyDefine("DeleteTrailingWS_txt")** is necessary. Now at first time, when processor is launched, a series of questions are asked (*path+config file name if different from default* if loaded or not). This script works only with files that has extension *\*.txt*. The following values are stored in **~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC** (that's default):
 
 ```
+" Next is deprecated
 let g:my_auto_DeleteTrailingWS=g:true
+
+" Next set during configuration time
+if !has("g:my_auto_DeleteTrailingWS")
+let g:my_auto_DeleteTrailingWS=g:true " 	My comment for DeleteTrailingWS_txt
+endif
 ```
 
-# How to create an *environment variable name*
-
-For the time being this feature can be done *by hand* or when you open a file. There is a serie of question(s) asked for each new plugin installed (or as long as *g:my_auto_< filename >* is not found in *~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC* for instance). Possible values are g:true for true or g:false for false. The value true load the module, false ignore it. It is mandatory to have that otherwise the serie of question(s) will be prompted.
-
-# A final configuration:
-
-```
-call plug#begin()
-Plug 'cbushdor/-MyDefaultValues4Vim'
-call plug#end()
-```
+For the time being this feature can be done *by hand* or when you open a file. There is a question asked for each new pluggin installed (or as long as *g:my_auto_< filename >* is not found in ~/.vimrc for instance now it is store in **~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC**). Possible values are g:true for true or g:false for false. The value true load the module, false ignore it. It is mandatory to have that..
 
 # Modules
 
-These files were added in *~/.vim* directory[^4]. They have *.vim* extenstion. they are loaded by default once put in this directory.
+These files were added in *vimrc* directory[^4]. They have *_txt* extenstion.
 
-* base.vim: added for test pupose.
-* DeleteTailingWS.vim: delete trailing white spaces when file is save *:w* for i.e.	
-
+* base_txt: added for test pupose.
+* DeleteTailingWS_txt: delete tring white spaces when file is save *:w* for i.e.	
 
 # WATCHOUT
 
-Plugin not finished yet! Subject to change and for that it is UNSTABLE!!!!!
-
-# BUG KNOWN
-
-Need to restart editor after new (re)configuration.
-
-# TODO
-
-- During first install in *~/.vim/plugged/-MyDefaultValues4Vim/vimrc*, the *path* and *filename* that contain configuration can be configured.
-
-- Help at command line not covered yet!
+Plugin not finished yet! Subject to change. MIGHT EXPERIMENT WEIRD BEHAVIORS!
 
 # License
 
@@ -131,4 +132,3 @@ Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0)
 [^2]: How to install [Vim plugin](https://linuxhandbook.com/install-vim-plugins/).
 [^3]: This code was based on [Vim documentation](https://vimdoc.sourceforge.net/).
 [^4]: This is where the vimrc directory is *~/.vim/plugged/-MyDefaultValues4Vim* in our case.
-[^5]: **WATCHOUT** in the near future it will be possible to configure *path* and *file name* in/from a *configure file*. This configure file will be unique (because it contains all variables that enable or disable by *true* and *false* the new plug).

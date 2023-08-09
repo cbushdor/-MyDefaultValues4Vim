@@ -2,27 +2,17 @@
 " Created By : sdo
 " File Name : locallib.vim
 " Creation Date :1970-01-01 00:59:59
-" Last Modified : 2023-08-02 02:01:00
+" Last Modified : 2023-08-06 23:56:38
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.592
+" Version : 0.0.0.634
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
 " Purpose :
 " ------------------------------------------------------
 
-if exists("g:MyDefaultValues4Vim_locallib_vim")
+if !MyDefine("locallib_vim")
 	finish
-endif
-
-let g:MyDefaultValues4Vim_locallib_vim=1
-
-if !has("g:true")
-	let g:true = 1
-endif
-
-if !has("g:false")
-	let g:false = 0
 endif
 
 " We load a plug from a given path
@@ -55,7 +45,7 @@ function! StartsLoading(path,plug)
 				let l:new_path="/"..join(r[0:(len(r)-2)],'/')
 				echo "We will change it"
 				echo "(path,file)=("..l:new_path..","..r[(len(r)-1)]..")"
-				let varEnv = LoadGlobVar("MyDefaultValues4Vim_")
+				let varEnv = LoadGlobVar("MyDefaultValues4Vim")
 				let varEnv = LoadGlobVar("my_auto_")
 			endif
 			:q
@@ -90,6 +80,7 @@ endfunction
 " Prompt a question
 " function! Confirm(msg,cho)
 function! Confirm(...)
+	echo "Number of parameter in function used:"..a:0
 	if a:0 == 2
 		let msg = a:1 " Message / Sentence asked
 		let chol = a:2 " Choice list
@@ -112,8 +103,14 @@ function! Confirm(...)
 		endif
 	else
 		let msg = a:1 " Message / Sentence asked
+		echo "================================================"
+		echo "===== We are here ==="
+		echo "================================================"
 		call inputsave() " We save input
-		let l:answer = input("azaeazeaeaa",g:local_path_homedir)
+		execute 'let l:answer = "'..input("azaeazeaeaa",g:local_path_homedir)..'"'
+		"if input("coffee or beer?") == "beer"
+		"	echo "Beer ba beloula! "..l:answer
+		"endif
 		call inputrestore() " We restore input
 		return g:local_path_homedir..l:answer
 	endif

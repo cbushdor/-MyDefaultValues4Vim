@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-08-10 00:12:30
+* Last Modified : 2023-08-10 01:46:52
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.131
+* Version : 0.0.0.143
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -51,21 +51,20 @@ Plug 'cbushdor/-MyDefaultValues4Vim'
 call plug#end()
 ```
 
-Each time you want to install a plugin, you must enter the name and location of the plugin between the **plug#begin()** and **plug#end** lines.
+Finally, start or restart Vim again and, go to prompt , as below, and use vim-plug to install the new plugin listed in ~/.vimrc:
 
-If the plugin you want isn't hosted on GitHub, then you can provide the full URL instead of just the GitHub username and project ID. You can even "install" local plugins outside of your ~/.vim directory.
-
-Finally, start Vim and prompt vim-plug to install the plugins listed in ~/.vimrc:
 ```
 :PlugInstall
 ```
 
 Wait for the plugins to be downloaded.
 
-To update type one of those comands:
+To update type one of those commands:
 ```
 :PlugUpdate
 ```
+or
+
 ```
 :PlugUpdate -MyDefaultValues4Vim
 ```
@@ -97,7 +96,7 @@ endfunction
 autocmd BufWritePre,FileWritePre *.txt :call DeleteTrailingWS()
 ```
 
-The **MyDefine("DeleteTrailingWS_txt")** is necessary. Now at first time, when processor is launched, a series of questions are asked (*path+config file name if different from default* if loaded or not). This script works only with files that has extension *\*.txt*. The following values are stored in **~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC** (that's default):
+The **MyDefine("DeleteTrailingWS_txt")** is necessary. Now at first time, when the word processor is launched, a series of questions are asked (*path+config file name if different from default*). If you want to be installed but don't want to be loaded yet then, set variable to *false* otherwise to *true* during install period or directly in configure file. This script works only with files that has extension *\*.txt*. The following values are stored in **~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC** (that's default):
 
 ```
 " Next is deprecated

@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-08-10 02:25:35
+* Last Modified : 2023-08-10 18:46:19
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.144
+* Version : 0.0.0.157
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -32,9 +32,9 @@
 
 **Prequisites**
 
-You must have git installed!
+You must have git installed[^6]!
 
-The following was adapted from [this](https://github.com/junegunn/vim-plug).
+The following was adapted from [this](https://github.com/junegunn/vim-plug) or the cabbage leaf[^2].
 
 **Install vim-plug so that it auto-loads at launch with:**
 
@@ -72,21 +72,10 @@ or
 # How to add *a new feature* within plugin
 
 We are in the script name **DeleteTrailingWS_txt** stored in *~/.vim/plugged/-MyDefaultValues4Vim/vimrc*.
-At the begining of this script we need to add this:
-
-```
-if !MyDefine('DeleteTrailingWS_txt')
-	finish
-endif
-```
 
 Just below, we created  *DeleteTrailingWS_txt* file name and its content:
 
 ```
-if !MyDefine('DeleteTrailingWS_txt')
-	finish
-endif
-
 function! DeleteTrailingWS()
 	exe "normal! mz"
 	%s/\s\+$//ge
@@ -96,7 +85,7 @@ endfunction
 autocmd BufWritePre,FileWritePre *.txt :call DeleteTrailingWS()
 ```
 
-The **MyDefine("DeleteTrailingWS_txt")** is necessary. Now at first time, when the word processor is launched, a series of questions are asked (*path+config file name if different from default*). If you want to be installed but don't want to be loaded yet then, set variable to *false* otherwise to *true* during install period or directly in configure file. This script works only with files that has extension *\*.txt*. The following values are stored in **~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC** (that's default):
+Now, when first load or at first time of use after setup, when the word processor is launched, a serie of questions is asked (*path+config file name if different from default*). If you want to install a module but don't want to be loaded yet then, set variable to *false* otherwise to *true* during install period or directly in configure file (see later)[^5]. This script works only with files that has extension *\*.txt*. The following values are stored in **~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC** (that's default):
 
 ```
 " Next is deprecated
@@ -108,11 +97,11 @@ let g:my_auto_DeleteTrailingWS=g:true " 	My comment for DeleteTrailingWS_txt
 endif
 ```
 
-For the time being this feature can be done *by hand* or when you open a file. There is a question asked for each new pluggin installed (or as long as *g:my_auto_< filename >* is not found in ~/.vimrc for instance now it is store in **~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC**). Possible values are g:true for true or g:false for false. The value true load the module, false ignore it. It is mandatory to have that..
+For the time being this feature can be done *by hand* or when you open a file. There is a question asked for each new pluggin installed (or as long as *g:my_auto_< filename >* is not found in memory for instance. For now on, it is store in **~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC**). Possible values are g:true for true or g:false for false. The value true load the module, false ignore it. It is mandatory to have that.
 
 # Modules
 
-These files were added in *vimrc* directory[^4]. They have *_txt* extenstion.
+These files were added in *vimrc* directory[^4]. They have *_txt* extenstion previosly they were *.vim* this is now deprecated.
 
 * base_txt: added for test pupose.
 * DeleteTailingWS_txt: delete tring white spaces when file is save *:w* for i.e.	
@@ -131,3 +120,5 @@ Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0)
 [^2]: How to install [Vim plugin](https://linuxhandbook.com/install-vim-plugins/).
 [^3]: This code was based on [Vim documentation](https://vimdoc.sourceforge.net/).
 [^4]: This is where the vimrc directory is *~/.vim/plugged/-MyDefaultValues4Vim* in our case.
+[^5]: This process is repeted as long as the module(s) is/are not registered in the configure file.
+[^6]: Getting Started - [Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).

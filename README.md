@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-08-11 00:07:36
+* Last Modified : 2023-08-11 00:11:02
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.164
+* Version : 0.0.0.166
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -76,7 +76,7 @@ We are in the script name **DeleteTrailingWS_txt** stored in *~/.vim/plugged/-My
 Just below, we created  *DeleteTrailingWS_txt* file name and, here its content:
 
 ```
-" to avoid finite loop when loading
+" To avoid finite loop when loading
 if !MyDefine('DeleteTrailingWS_txt')
 	finish
 endif
@@ -87,7 +87,7 @@ function! DeleteTrailingWS()
 	exe "normal! 'z"
 endfunction
 
-" *.txt can be replaced by different extension here it works with file s.a foo.txt
+" This is *.txt, it can be replaced by different extension here it works with file s.a foo.txt
 autocmd BufWritePre,FileWritePre *.txt :call DeleteTrailingWS()
 ```
 

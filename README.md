@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-08-11 00:11:02
+* Last Modified : 2023-08-11 00:14:28
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.166
+* Version : 0.0.0.168
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -72,6 +72,7 @@ or
 # How to add *a new feature* within plugin
 
 We are in the script name **DeleteTrailingWS_txt** stored in *~/.vim/plugged/-MyDefaultValues4Vim/vimrc*.
+Each time you want to add a plugin go in that directory (check upper path). Follow the exemple below!
 
 Just below, we created  *DeleteTrailingWS_txt* file name and, here its content:
 

@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-08-11 00:21:51
+* Last Modified : 2023-08-11 00:25:20
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.172
+* Version : 0.0.0.175
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -94,7 +94,7 @@ endfunction
 autocmd BufWritePre,FileWritePre *.txt :call DeleteTrailingWS()
 ```
 
-Now, when first load or at first time of use after setup, when the word processor is launched, a serie of questions is asked (*path+config file name if different from default*). If you want to install a module but don't want to be loaded yet then, set variable to *false* otherwise to *true* during install period or directly in configure file (see later)[^5]. This script works only with files that has extension *\*.txt*. The following values are stored in **~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC** (that's default):
+Now, when first load or at first time of use after setup, a serie of questions is asked (*path+config file name if different from default*). If you want to install a module but don't want to be loaded yet then, set variable to *false* otherwise to *true* during install period (check exemple below) or directly in configure file (see later)[^5]. This script works only with files that has extension *\*.txt*. The following values are stored in **~/.vim/plugged/-MyDefaultValues4Vim/mylibrary/MYVIMRC** (that's default):
 
 ```
 if !has("g:my_auto_DeleteTrailingWS")

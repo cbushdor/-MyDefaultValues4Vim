@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-08-11 00:31:52
+* Last Modified : 2023-08-11 00:32:25
 * Email Address : sdo@dorseb.ddns.net
-* Version : 0.0.0.179
+* Version : 0.0.0.180
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -109,7 +109,7 @@ For the time being this feature can be done *by hand* or when you open a file. T
 These files were added in *vimrc* directory[^4]. They have *_txt* extenstion previosly they were *.vim* this is now deprecated.
 
 * base_txt: added for test pupose.
-* DeleteTailingWS_txt: Delete Trailing White Spaces when file is save with command *:w*.	
+* DeleteTailingWS_txt: Delete Trailing White Spaces when file is save with command *:w* .	
 
 # WATCHOUT
 

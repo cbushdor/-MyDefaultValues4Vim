@@ -21,6 +21,7 @@
 - System [macOS](https://en.wikipedia.org/wiki/MacOS): Version 13.2.1 (22D68).
 - System [Fedora](https://getfedora.org/) (not fully tested yet): Version 38beta (Should work on other linux [distros](https://en.wikipedia.org/wiki/List_of_Linux_distributions) too).
 - Scripts: [Markdown](https://en.wikipedia.org/wiki/Markdown), [Vim Script](https://en.wikipedia.org/wiki/Vim_(text_editor)#Vim_script) (several writings s.a VimScript or VimL can be found). The [Vim 9 script](https://vimhelp.org/vim9.txt.html#) is not used in scripts yet.
+- [Shell](https://en.wikipedia.org/wiki/Unix_shell): zsh[^7] is used, but other shell should be ok (not tested yet).
 - Vim plugin: [Vim-plug](https://github.com/junegunn/vim-plug).
 
 
@@ -127,3 +128,4 @@ Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0)
 [^4]: This is where the vimrc directory is *~/.vim/plugged/-MyDefaultValues4Vim* in our case.
 [^5]: This process is repeted as long as the module(s) is/are not registered in the configure file.
 [^6]: Getting Started - [Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+[^7]: What is shell [zsh](https://en.wikipedia.org/wiki/Z_shell).

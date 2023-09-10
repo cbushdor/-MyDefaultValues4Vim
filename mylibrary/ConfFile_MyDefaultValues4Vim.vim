@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : ConfFile_MyDefaultValues4Vim.vim
 " Creation Date :2023-07-05 15:03:48
-" Last Modified : 2023-08-06 23:56:17
+" Last Modified : 2023-09-09 00:17:00
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.106
+" Version : 0.0.0.159
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -13,11 +13,11 @@
 " ------------------------------------------------------
 
 if !has("g:true")
-	let g:true = 1
+  let g:true = 1
 endif
 
 if !has("g:false")
-	let g:false = 0
+  let g:false = 0
 endif
 
 let g:current_path=expand('<sfile>:p:h') " We get current path
@@ -42,16 +42,19 @@ endif
 let g:file_ext_ref = "."..expand("%:e") " this file ref for extension comp
 "echo "2.1==========================>"..g:file_ext_ref
 
-echo g:local_path_homedir .. " =>(path - module)<= " .. g:module_name
+echo g:module_name.." module is being launched..."
+"echo g:local_path_homedir .. " =>(path - module)<= " .. g:module_name
 "echo "3==========================>"..g:local_path_homedir
 let g:local_path_vimrc = g:local_path_homedir.."vimrc/" " path to vimrc that contains files
 let g:local_path_mylibrary =  g:local_path_homedir.."mylibrary/" " path to mylibrary that contains files
 let g:pathConf = 'MYVIMRC' " File that contains local configuration
 
+" Loads source
 function! LoadSource(file)
   execute "source "..a:file
 endfunction
 
+" Gets current file nale
 function! GetsCurrentFileName()
   return expand("%:p")
 endfunction
@@ -67,9 +70,51 @@ function! LoadGlobVar(...)
   for i in keys(g:)
     for j in 1..a:0
       if i =~ get(a:,j,0)
-        echo "LoadGlobVar: "..get(a:,j,0)..":---->"..i.."<----"
+        echo "LoadGlobVar: " .. get(a:,j,0) .. ":---->" .. i .. "<----"
       endif
     endfor
   endfor
 endfunction
 
+" Calculates random number
+function Rand()
+  return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:])
+endfunction
+
+" Executes shell script input entered should be returned!
+function! MyExec(p)
+  "let l:tmp = GetsPid() .. Rand() .. ".tmp"
+  let l:tmp = Rand() .. Rand() .. ".tmp"
+  let l:parm = a:p .. ">&" .. l:tmp
+  :silent exec l:parm
+  :let l:b = readfile(l:tmp)
+  let l:mrm = ":!rm -f " .. l:tmp
+  :silent exec l:mrm
+  :return l:b[0]
+endfunction
+
+" Executes shell script no input expected so no result returned!
+function! MyExecOut(p)
+  "let l:tmp = GetsPid() .. Rand() .. ".tmp"
+  "let l:tmp = Rand() .. Rand() .. ".tmp"
+  let l:parm = a:p  
+  ".. ">&" .. l:tmp
+  :silent exec l:parm
+ " :let l:b = readfile(l:tmp)
+ " let l:mrm = ":!rm -f " .. l:tmp
+ " :silent exec l:mrm
+ " :return l:b[0]
+endfunction
+
+" Gets PID 
+function GetsPid()
+  let l:term = MyExec(':!export MYPID=$(echo $$);echo ${MYPID}')
+  return l:term
+endfunction
+
+" A prompt to replace input()
+function! MyPrompt(p)
+  echo a:p
+  let l:term = MyExec(':!read momo;echo $momo')
+  return l:term
+endfunction

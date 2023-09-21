@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : ConfFile_MyDefaultValues4Vim.vim
 " Creation Date :2023-07-05 15:03:48
-" Last Modified : 2023-09-09 00:17:00
+" Last Modified : 2023-09-21 15:42:53
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.159
+" Version : 0.0.0.166
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -25,7 +25,7 @@ let g:local_path_homedir = substitute(g:current_path,'\v(\/[^\/]+){1}$','',"")..
 let dirs=split(g:local_path_homedir,'/') " Split by separator g:local_path_homedir
 let g:module_name=substitute(dirs[len(dirs)-1],'-','',"") " we get module name from homedir path
 
-" Define predifined global variable
+" This is used to define predifined global variable if it does not exist
 function! MyDefine(var)
   if !exists("g:".g:module_name."_".a:var)
     exe "let g:".g:module_name."_".a:var ."=1"
@@ -40,11 +40,6 @@ if !MyDefine("loaded_ConfFile")
 endif
 
 let g:file_ext_ref = "."..expand("%:e") " this file ref for extension comp
-"echo "2.1==========================>"..g:file_ext_ref
-
-echo g:module_name.." module is being launched..."
-"echo g:local_path_homedir .. " =>(path - module)<= " .. g:module_name
-"echo "3==========================>"..g:local_path_homedir
 let g:local_path_vimrc = g:local_path_homedir.."vimrc/" " path to vimrc that contains files
 let g:local_path_mylibrary =  g:local_path_homedir.."mylibrary/" " path to mylibrary that contains files
 let g:pathConf = 'MYVIMRC' " File that contains local configuration
@@ -64,7 +59,6 @@ function! CreatesEnvVar(en)
   return 'g:my_auto_'..a:en " We take file associated with script name and create environment variable/memory associated
 endfunction
 
-
 " Load global extension that start with suf(ix)
 function! LoadGlobVar(...)
   for i in keys(g:)
@@ -81,9 +75,12 @@ function Rand()
   return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:])
 endfunction
 
+" -------------------------------------------------------------
+"  Next are used to call to outside functions within vimscript
+" -------------------------------------------------------------
+
 " Executes shell script input entered should be returned!
 function! MyExec(p)
-  "let l:tmp = GetsPid() .. Rand() .. ".tmp"
   let l:tmp = Rand() .. Rand() .. ".tmp"
   let l:parm = a:p .. ">&" .. l:tmp
   :silent exec l:parm
@@ -95,15 +92,8 @@ endfunction
 
 " Executes shell script no input expected so no result returned!
 function! MyExecOut(p)
-  "let l:tmp = GetsPid() .. Rand() .. ".tmp"
-  "let l:tmp = Rand() .. Rand() .. ".tmp"
   let l:parm = a:p  
-  ".. ">&" .. l:tmp
   :silent exec l:parm
- " :let l:b = readfile(l:tmp)
- " let l:mrm = ":!rm -f " .. l:tmp
- " :silent exec l:mrm
- " :return l:b[0]
 endfunction
 
 " Gets PID 

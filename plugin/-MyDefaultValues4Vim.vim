@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : -MyDefaultValues4Vim.vim
 " Creation Date : 2023-05-08 00:22:02
-" Last Modified : 2023-09-09 00:18:53
+" Last Modified : 2023-09-20 16:42:28
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.592
+" Version : 0.0.0.655
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -15,26 +15,25 @@
 " We put on line all variables from here
 execute "source  "..expand('<sfile>:p:h').."/../mylibrary/ConfFile_MyDefaultValues4Vim.vim"
 
-call MyExecOut(":!echo \"\";echo -e \"plain \e[0;31mRED MESSAGE \e[0m reset\"")
 
-silent! exec ':!bash color.sh ; echo "hello"'
-let term = MyPrompt("Enter new stuff("..GetsPid().."):")
-echo "----->"..term.."<------"
-
-"call MyDefine('loaded_MyDefaultValues4Vim')
 if !MyDefine('loaded_MyDefaultValues4Vim')
 	finish
 endif
 
-"let s:local_path_vimrc = expand('<sfile>:p:h').."/../vimrc" " path to vimrc that contains files
-"let g:toLoad=expand("%:p") " Current file name to load
-let g:toLoad=GetsCurrentFileName()  " Current file name to load
-"echo "------------------------->".. g:toLoad
+autocmd BufNewFile,BufReadPre * exe ":call MyStart()"
 
-" echo "ooooooooooooooooooooooooooo>"..g:local_path_mylibrary
+function! MyStart()
+	echohl MoreMsg
+	echo "Hello my test are here"
+	let a = input("new tests:")
+	echohl None
 
-" We plug my local library
-call LoadSource(g:local_path_mylibrary.."/locallib.vim")
+	let g:toLoad=GetsCurrentFileName()  " Current file name to load
+
+	" We plug my local library
+	call LoadSource(g:local_path_mylibrary.."/locallib.vim")
+	call GoGetIt()
+endfunction
 
 " Function that is loading files from a specific directory
 function! ListAllFiles(path,filt)
@@ -57,4 +56,3 @@ function! GoGetIt()
 	"let varEnv = LoadGlobVar("my_auto_")
 endfunction
 
-call GoGetIt()

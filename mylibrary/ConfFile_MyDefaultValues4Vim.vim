@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : ConfFile_MyDefaultValues4Vim.vim
 " Creation Date :2023-07-05 15:03:48
-" Last Modified : 2023-09-21 15:42:53
+" Last Modified : 2023-09-22 19:48:16
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.166
+" Version : 0.0.0.175
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -80,6 +80,7 @@ endfunction
 " -------------------------------------------------------------
 
 " Executes shell script input entered should be returned!
+" p as  ':!read momo;echo $momo'
 function! MyExec(p)
   let l:tmp = Rand() .. Rand() .. ".tmp"
   let l:parm = a:p .. ">&" .. l:tmp
@@ -91,6 +92,7 @@ function! MyExec(p)
 endfunction
 
 " Executes shell script no input expected so no result returned!
+" p as  ':!read momo;echo $momo'
 function! MyExecOut(p)
   let l:parm = a:p  
   :silent exec l:parm
@@ -102,9 +104,16 @@ function GetsPid()
   return l:term
 endfunction
 
-" A prompt to replace input()
-function! MyPrompt(p)
-  echo a:p
-  let l:term = MyExec(':!read momo;echo $momo')
-  return l:term
+" Prints colored string. Needs array as parameter. 
+" let MyArray = [['string1','highlightString1'], ['string2','highlighString2'] ]
+function! PrintsColoredString(arr)
+	let i = 0
+	while i < len(a:arr)
+		exe a:arr[i][1]
+		echohl MyColor
+		echon a:arr[i][0]
+		echohl None
+		let i += 1
+	endwhile
 endfunction
+

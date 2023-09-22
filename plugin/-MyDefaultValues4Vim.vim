@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : -MyDefaultValues4Vim.vim
 " Creation Date : 2023-05-08 00:22:02
-" Last Modified : 2023-09-21 15:19:44
+" Last Modified : 2023-09-22 19:47:54
 " Email Address : sdo@dorseb.ddns.net
-" Version : 0.0.0.656
+" Version : 0.0.0.703
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -23,10 +23,12 @@ endif
 autocmd BufNewFile,BufReadPre * exe ":call MyStart()"
 
 function! MyStart()
-"	echohl MoreMsg
-"	echo "Hello my test are here"
-"	let a = input("new tests:")
-"	echohl None
+	let MyArray = [["Hi my test are here ",':hi MyColor  term=bold ctermfg=Blue guifg=#80a0ff gui=bold'], ["Hello my test are here ",':hi MyColor  term=bold ctermfg=Cyan guifg=#80a0ff gui=bold'] ]
+	call PrintsColoredString(MyArray)
+	echon "---->"
+	echohl WarningMsg
+	let a = input(" 2 new tests:")
+	echohl None
 
 	let g:toLoad=GetsCurrentFileName()  " Current file name to load
 

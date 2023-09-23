@@ -107,13 +107,28 @@ endfunction
 " Prints colored string. Needs array as parameter. 
 " let MyArray = [['string1','highlightString1'], ['string2','highlighString2'] ]
 function! PrintsColoredString(arr)
-	let i = 0
-	while i < len(a:arr)
-		exe a:arr[i][1]
-		echohl MyColor
-		echon a:arr[i][0]
-		echohl None
-		let i += 1
-	endwhile
+  let i = 0
+  while i < len(a:arr)
+    exe a:arr[i][1]
+    echohl MyColor
+    echon a:arr[i][0]
+    echohl None
+    let i += 1
+  endwhile
+endfunction
+
+" Add new info to print in the string
+" array, new string, color
+function! AddToPrintColorString(a,s,c)
+  call add(a:a,[a:s,a:c])
+endfunction
+
+function! ClearStringColor(a)
+  let i = 0
+  while i < len(a:a)
+    let k = remove(a:a,-1)
+    let i += 1
+  endwhile
+  let k = remove(a:a,-1)
 endfunction
 

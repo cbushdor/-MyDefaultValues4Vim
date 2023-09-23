@@ -15,7 +15,6 @@
 " We put on line all variables from here
 execute "source  "..expand('<sfile>:p:h').."/../mylibrary/ConfFile_MyDefaultValues4Vim.vim"
 
-
 if !MyDefine('loaded_MyDefaultValues4Vim')
 	finish
 endif
@@ -24,8 +23,12 @@ autocmd BufNewFile,BufReadPre * exe ":call MyStart()"
 
 function! MyStart()
 	let MyArray = [["Hi my test are here ",':hi MyColor  term=bold ctermfg=Blue guifg=#80a0ff gui=bold'], ["Hello my test are here ",':hi MyColor  term=bold ctermfg=Cyan guifg=#80a0ff gui=bold'] ]
+	call AddToPrintColorString(MyArray,"Howdy my test are here ",':hi MyColor  term=bold ctermfg=Red guifg=#80a0ff gui=bold')
 	call PrintsColoredString(MyArray)
-	echon "---->"
+	call ClearStringColor(MyArray)
+	echon "After cleaning string---->"
+	call PrintsColoredString(MyArray)
+	echon "<==================rAfter cleaning String"
 	echohl WarningMsg
 	let a = input(" 2 new tests:")
 	echohl None

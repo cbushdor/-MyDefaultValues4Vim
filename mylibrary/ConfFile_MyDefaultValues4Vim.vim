@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : ConfFile_MyDefaultValues4Vim.vim
 " Creation Date :2023-07-05 15:03:48
-" Last Modified : 2023-09-24 22:08:57
+" Last Modified : 2023-09-24 22:40:31
 " Email Address : cbushdor@laposte.net
-" Version : 0.0.0.211
+" Version : 0.0.0.213
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -133,15 +133,15 @@ function! ClearStringColor(a)
   let l:k = remove(a:a,-1)
 endfunction
 
-" StackStringColor is to add tuple to s at the end
+" AddStackStringColor is to add tuple to s at the end
 " returns the new list
-function! StackStringColor(s,tuple)
+function! AddStackStringColor(s,tuple)
   call add(a:s,a:tuple)
 endfunction
 
-" HeadStringColor is to add tuple to s at the beging
+" AddHeadStringColor is to add tuple to s at the beging
 " returns the new list
-function! HeadStringColor(s,tuple)
+function! AddHeadStringColor(s,tuple)
   call reverse(a:s)
   call add(a:s , a:tuple)
   call reverse(a:s)

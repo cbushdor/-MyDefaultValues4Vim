@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : -MyDefaultValues4Vim.vim
 " Creation Date : 2023-05-08 00:22:02
-" Last Modified : 2023-09-24 22:26:48
+" Last Modified : 2023-09-24 22:41:43
 " Email Address : cbushdor@laposte.net
-" Version : 0.0.0.746
+" Version : 0.0.0.750
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -29,17 +29,17 @@ function! MyStart()
 	echo "-"
 	call PrintsColoredString(MyArray)
 	echo "-"
-	call HeadStringColor(MyArray,["22 New Howdy my test are here ",':hi MyColor  term=bold ctermfg=Red guifg=#80a0ff gui=bold'])
+	call AddHeadStringColor(MyArray,["22 New Howdy my test are here ",':hi MyColor  term=bold ctermfg=Red guifg=#80a0ff gui=bold'])
 	call PrintsColoredString(MyArray)
 	echo ""
-	call HeadStringColor(MyArray,["23 New Howdy my test are here ",':hi MyColor  term=bold ctermfg=Green guifg=#80a0ff gui=bold'])
-	call HeadStringColor(MyArray,["24 New Howdy my test are here ",':hi MyColor  term=bold ctermfg=Blue guifg=#80a0ff gui=bold'])
+	call AddHeadStringColor(MyArray,["23 New Howdy my test are here ",':hi MyColor  term=bold ctermfg=Green guifg=#80a0ff gui=bold'])
+	call AddHeadStringColor(MyArray,["24 New Howdy my test are here ",':hi MyColor  term=bold ctermfg=Blue guifg=#80a0ff gui=bold'])
 	call PrintsColoredString(MyArray)
 	echo "-"
-	call HeadStringColor(MyArray,["25 New Howdy my test are here ",':hi MyColor  term=bold ctermfg=yellow guifg=#80a0ff gui=bold'])
+	call AddHeadStringColor(MyArray,["25 New Howdy my test are here ",':hi MyColor  term=bold ctermfg=yellow guifg=#80a0ff gui=bold'])
 	call PrintsColoredString(MyArray)
 	echo "-"
-	call StackStringColor(MyArray,["26 New Howdy my test are here ",':hi MyColor  term=bold ctermfg=blue guifg=#80a0ff gui=bold'])
+	call AddStackStringColor(MyArray,["26 New Howdy my test are here ",':hi MyColor  term=bold ctermfg=blue guifg=#80a0ff gui=bold'])
 	call PrintsColoredString(MyArray)
 	echo "-"
 	echohl WarningMsg
@@ -80,7 +80,7 @@ endfunction
 " Creation Date : 2023-05-08 00:22:02
 " Last Modified : 2023-09-24 02:09:44
 " Email Address : cbushdor@laposte.net
-" Version : 0.0.0.746
+" Version : 0.0.0.750
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -105,11 +105,11 @@ function! MyStart()
 	echo ""
 	call PrintsColoredString(MyArray)
 	echo ""
-	let MyArray = HeadStringColor(MyArray,["New Howdy my test are here ",':hi MyColor  term=bold ctermfg=Red guifg=#80a0ff gui=bold'])
+	call AddHeadStringColor(MyArray,["New Howdy my test are here ",':hi MyColor  term=bold ctermfg=Red guifg=#80a0ff gui=bold'])
 	call PrintsColoredString(MyArray)
 	echo ""
-	let MyArray = StackStringColor(MyArray,["23 New Howdy my test are here ",':hi MyColor  term=bold ctermfg=Green guifg=#80a0ff gui=bold'])
-	"call PrintsColoredString(MyArray)
+	call AddStackStringColor(MyArray,["23 New Howdy my test are here ",':hi MyColor  term=bold ctermfg=Green guifg=#80a0ff gui=bold'])
+	call PrintsColoredString(MyArray)
 	echohl WarningMsg
 	let a = input(" 2 new tests:")
 	echohl None

@@ -2,9 +2,9 @@
 " Created By : sdo
 " File Name : ConfFile_MyDefaultValues4Vim.vim
 " Creation Date :2023-07-05 15:03:48
-" Last Modified : 2023-09-23 02:31:52
+" Last Modified : 2023-09-24 22:08:57
 " Email Address : cbushdor@laposte.net
-" Version : 0.0.0.178
+" Version : 0.0.0.211
 " License : 
 " 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 " 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -107,13 +107,13 @@ endfunction
 " Prints colored string. Needs array as parameter. 
 " let MyArray = [['string1','highlightString1'], ['string2','highlighString2'] ]
 function! PrintsColoredString(arr)
-  let i = 0
-  while i < len(a:arr)
-    exe a:arr[i][1]
+  let l:i = 0
+  while l:i < len(a:arr)
+    exe a:arr[l:i][1]
     echohl MyColor
-    echon a:arr[i][0]
+    echon a:arr[l:i][0]
     echohl None
-    let i += 1
+    let l:i += 1
   endwhile
 endfunction
 
@@ -123,12 +123,26 @@ function! AddToPrintColorString(a,s,c)
   call add(a:a,[a:s,a:c])
 endfunction
 
+" We erase the string
 function! ClearStringColor(a)
-  let i = 0
-  while i < len(a:a)
-    let k = remove(a:a,-1)
-    let i += 1
+  let l:i = 0
+  while l:i < len(a:a)
+    let l:k = remove(a:a,-1)
+    let l:i += 1
   endwhile
-  let k = remove(a:a,-1)
+  let l:k = remove(a:a,-1)
 endfunction
 
+" StackStringColor is to add tuple to s at the end
+" returns the new list
+function! StackStringColor(s,tuple)
+  call add(a:s,a:tuple)
+endfunction
+
+" HeadStringColor is to add tuple to s at the beging
+" returns the new list
+function! HeadStringColor(s,tuple)
+  call reverse(a:s)
+  call add(a:s , a:tuple)
+  call reverse(a:s)
+endfunction

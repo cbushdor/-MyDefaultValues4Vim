@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2023-09-23 02:41:07
+* Last Modified : 2023-12-29 23:41:49
 * Email Address : cbushdor@laposte.net
-* Version : 0.0.0.181
+* Version : 0.0.0.182
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.

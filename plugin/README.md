@@ -2,9 +2,9 @@
 * Created By : sdo
 * File Name : README.md
 * Creation Date :2023-05-08 05:52:48
-* Last Modified : 2024-02-18 02:06:25
+* Last Modified : 2024-02-18 02:11:31
 * Email Address : cbushdor@laposte.net
-* Version : 0.0.0.184
+* Version : 0.0.0.188
 * License : 
 * 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
 * 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
@@ -130,24 +130,15 @@ Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0)
 [^6]: Getting Started - [Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 [^7]: What is shell [zsh](https://en.wikipedia.org/wiki/Z_shell).
 
-# License
-
-Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0)
-* 	Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0
- 	Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.
-
 # CAVEATS
-
-<!--
-If several files are opened in the same vim, headers might not be updated properly when file are saved.
--->
 
 If a file is closed with *:x* command, fields are not updated properly.
 
 
 # Credits
 
-[Vim](https://www.vim.org/)
+To [Vim](https://www.vim.org/).
+
 Made from/Based on some examples from [Fandom](https://vim.fandom.com/) examples!
 
 # Contact

@@ -4,9 +4,9 @@
 *.tmp
 *~
 .pause
-/.pause
 /.build
 /.tidyall.d
+/.*.swp
 /Build
 /Build.bat
 /MYMETA.yml
